@@ -1,7 +1,6 @@
 import 'package:convert/convert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_trust_wallet_core/flutter_trust_wallet_core.dart';
-import 'package:flutter_trust_wallet_core/trust_wallet_core_ffi.dart';
 import 'package:flutter_trust_wallet_core_example/base_example.dart';
 import 'package:flutter_trust_wallet_core/protobuf/bitcoin.pb.dart' as Bitcoin;
 import 'package:fixnum/fixnum.dart' as $fixnum;

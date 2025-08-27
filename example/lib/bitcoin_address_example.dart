@@ -3,7 +3,6 @@ import 'dart:typed_data';
 import 'package:convert/convert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_trust_wallet_core/flutter_trust_wallet_core.dart';
-import 'package:flutter_trust_wallet_core/trust_wallet_core_ffi.dart';
 import 'package:flutter_trust_wallet_core_example/WIF.dart';
 import 'package:flutter_trust_wallet_core_example/base_example.dart';
 
