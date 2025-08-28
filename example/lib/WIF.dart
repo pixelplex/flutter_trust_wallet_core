@@ -2,20 +2,19 @@ import 'dart:typed_data';
 
 import 'package:convert/convert.dart';
 import 'package:flutter_trust_wallet_core/flutter_trust_wallet_core.dart' as walletCore;
-import 'package:flutter_trust_wallet_core/trust_wallet_core_ffi.dart';
 
 class WIF {
   /// https://secretscan.org/PrivateKeyWif
   static String encode(String privateKeyHex, int coinType, {bool compress = true}) {
     switch (coinType) {
-      case TWCoinType.TWCoinTypeBitcoin:
-      case TWCoinType.TWCoinTypeBitcoinCash:
+      case walletCore.TWCoinType.TWCoinTypeBitcoin:
+      case walletCore.TWCoinType.TWCoinTypeBitcoinCash:
         privateKeyHex = "80" + privateKeyHex;
         break;
-      case TWCoinType.TWCoinTypeLitecoin:
+      case walletCore.TWCoinType.TWCoinTypeLitecoin:
         privateKeyHex = "B0" + privateKeyHex;
         break;
-      case TWCoinType.TWCoinTypeDogecoin:
+      case walletCore.TWCoinType.TWCoinTypeDogecoin:
         privateKeyHex = "9E" + privateKeyHex;
         break;
     }
