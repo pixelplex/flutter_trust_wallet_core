@@ -13,9 +13,9 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'Binance.pb.dart' as $3;
+import 'Binance.pb.dart' as $11;
 import 'Common.pbenum.dart' as $0;
-import 'Solana.pb.dart' as $4;
+import 'Solana.pb.dart' as $12;
 import 'WalletConnect.pbenum.dart';
 
 export 'WalletConnect.pbenum.dart';
@@ -112,8 +112,8 @@ class ParseRequestOutput extends $pb.GeneratedMessage {
   factory ParseRequestOutput({
     $0.SigningError? error,
     $core.String? errorMessage,
-    $3.SigningInput? binance,
-    $4.SigningInput? solana,
+    $11.SigningInput? binance,
+    $12.SigningInput? solana,
   }) {
     final $result = create();
     if (error != null) {
@@ -143,8 +143,8 @@ class ParseRequestOutput extends $pb.GeneratedMessage {
     ..oo(0, [3, 4])
     ..e<$0.SigningError>(1, _omitFieldNames ? '' : 'error', $pb.PbFieldType.OE, defaultOrMaker: $0.SigningError.OK, valueOf: $0.SigningError.valueOf, enumValues: $0.SigningError.values)
     ..aOS(2, _omitFieldNames ? '' : 'errorMessage')
-    ..aOM<$3.SigningInput>(3, _omitFieldNames ? '' : 'binance', subBuilder: $3.SigningInput.create)
-    ..aOM<$4.SigningInput>(4, _omitFieldNames ? '' : 'solana', subBuilder: $4.SigningInput.create)
+    ..aOM<$11.SigningInput>(3, _omitFieldNames ? '' : 'binance', subBuilder: $11.SigningInput.create)
+    ..aOM<$12.SigningInput>(4, _omitFieldNames ? '' : 'solana', subBuilder: $12.SigningInput.create)
     ..hasRequiredFields = false
   ;
 
@@ -193,26 +193,26 @@ class ParseRequestOutput extends $pb.GeneratedMessage {
   void clearErrorMessage() => clearField(2);
 
   @$pb.TagNumber(3)
-  $3.SigningInput get binance => $_getN(2);
+  $11.SigningInput get binance => $_getN(2);
   @$pb.TagNumber(3)
-  set binance($3.SigningInput v) { setField(3, v); }
+  set binance($11.SigningInput v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasBinance() => $_has(2);
   @$pb.TagNumber(3)
   void clearBinance() => clearField(3);
   @$pb.TagNumber(3)
-  $3.SigningInput ensureBinance() => $_ensure(2);
+  $11.SigningInput ensureBinance() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  $4.SigningInput get solana => $_getN(3);
+  $12.SigningInput get solana => $_getN(3);
   @$pb.TagNumber(4)
-  set solana($4.SigningInput v) { setField(4, v); }
+  set solana($12.SigningInput v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasSolana() => $_has(3);
   @$pb.TagNumber(4)
   void clearSolana() => clearField(4);
   @$pb.TagNumber(4)
-  $4.SigningInput ensureSolana() => $_ensure(3);
+  $12.SigningInput ensureSolana() => $_ensure(3);
 }
 
 

@@ -69,6 +69,11 @@ message WithdrawAllStake {
     repeated StakeAccountValue stake_accounts = 1;
 }
 
+enum TokenProgramId {
+    TokenProgram = 0;
+    Token2022Program = 1;
+}
+
 // Create a token account under a main account for a token type
 message CreateTokenAccount {
     // main account -- can be same as signer, or other main account (if done on some other account's behalf)
@@ -79,6 +84,9 @@ message CreateTokenAccount {
 
     // Token address
     string token_address = 3;
+
+    // optional token program id
+    TokenProgramId token_program_id = 4;
 }
 
 // Transfer tokens
@@ -103,6 +111,9 @@ message TokenTransfer {
 
     // optional referenced public keys
     repeated string references = 7;
+
+    // optional token program id
+    TokenProgramId token_program_id = 8;
 }
 
 // CreateTokenAccount and TokenTransfer combined
@@ -130,6 +141,31 @@ message CreateAndTransferToken {
 
     // optional referenced public keys
     repeated string references = 8;
+
+    // optional token program id
+    TokenProgramId token_program_id = 9;
+}
+
+// Transfer tokens to the feepayer
+message TokenTransferToFeePayer {
+    // Mint address of the fee token
+    string fee_token_mint_address = 1;
+
+    // Token account address of the fee recipient. 
+    // Note that it could be different from the token account of the feepayer.
+    string fee_recipient_token_address = 2;
+
+    // Fee amount
+    uint64 fee_amount = 3;
+
+    // Sender's fee token address
+    string fee_sender_token_address = 4;
+
+    // Note: 8-bit value
+    uint32 fee_decimals = 5;
+
+    // optional token program id
+    TokenProgramId fee_token_program_id = 6;
 }
 
 message CreateNonceAccount {
@@ -272,6 +308,11 @@ message SigningInput {
     // fee for higher transaction prioritization.
     // https://solana.com/docs/intro/transaction_fees#prioritization-fee
     PriorityFeeLimit priority_fee_limit = 23;
+    // Optional token transfer to fee payer.
+    TokenTransferToFeePayer token_transfer_to_fee_payer = 24;
+    // Optional SOL transfer to fee payer. This will be the last instruction in the transaction.
+    // https://docs.blinklabs.xyz/blink/solana/gas-sponsorship/api-reference#active-sponsorship
+    Transfer transfer_to_fee_payer = 25;
 }
 
 // Result containing the signed and encoded transaction.
@@ -305,4 +346,34 @@ message PreSigningOutput {
 
     // Error code description
     string error_message = 4;
+}
+
+message MessageSigningInput {
+    // The secret private key used for signing (32 bytes).
+    bytes private_key = 1;
+
+    // A UTF-8 regular message to sign.
+    string message = 2;
+}
+
+message MessageSigningOutput {
+    // The signature, Base58-encoded.
+    string signature = 1;
+
+    // error code, 0 is ok, other codes will be treated as errors
+    Common.Proto.SigningError error = 2;
+
+    // error code description
+    string error_message = 3;
+}
+
+message MessageVerifyingInput {
+    // The message signed.
+    string message = 1;
+
+    // Public key that will verify and recover the message from the signature.
+    bytes public_key = 2;
+
+    // The signature, Base58-encoded.
+    string signature = 3;
 }

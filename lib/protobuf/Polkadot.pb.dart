@@ -799,6 +799,8 @@ class Staking_BondAndNominate extends $pb.GeneratedMessage {
     RewardDestination? rewardDestination,
     $core.Iterable<$core.String>? nominators,
     CallIndices? callIndices,
+    CallIndices? bondCallIndices,
+    CallIndices? nominateCallIndices,
   }) {
     final $result = create();
     if (controller != null) {
@@ -816,6 +818,12 @@ class Staking_BondAndNominate extends $pb.GeneratedMessage {
     if (callIndices != null) {
       $result.callIndices = callIndices;
     }
+    if (bondCallIndices != null) {
+      $result.bondCallIndices = bondCallIndices;
+    }
+    if (nominateCallIndices != null) {
+      $result.nominateCallIndices = nominateCallIndices;
+    }
     return $result;
   }
   Staking_BondAndNominate._() : super();
@@ -828,6 +836,8 @@ class Staking_BondAndNominate extends $pb.GeneratedMessage {
     ..e<RewardDestination>(3, _omitFieldNames ? '' : 'rewardDestination', $pb.PbFieldType.OE, defaultOrMaker: RewardDestination.STAKED, valueOf: RewardDestination.valueOf, enumValues: RewardDestination.values)
     ..pPS(4, _omitFieldNames ? '' : 'nominators')
     ..aOM<CallIndices>(5, _omitFieldNames ? '' : 'callIndices', subBuilder: CallIndices.create)
+    ..aOM<CallIndices>(6, _omitFieldNames ? '' : 'bondCallIndices', subBuilder: CallIndices.create)
+    ..aOM<CallIndices>(7, _omitFieldNames ? '' : 'nominateCallIndices', subBuilder: CallIndices.create)
     ..hasRequiredFields = false
   ;
 
@@ -897,6 +907,142 @@ class Staking_BondAndNominate extends $pb.GeneratedMessage {
   void clearCallIndices() => clearField(5);
   @$pb.TagNumber(5)
   CallIndices ensureCallIndices() => $_ensure(4);
+
+  /// Staking.Bond call indices
+  @$pb.TagNumber(6)
+  CallIndices get bondCallIndices => $_getN(5);
+  @$pb.TagNumber(6)
+  set bondCallIndices(CallIndices v) { setField(6, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasBondCallIndices() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearBondCallIndices() => clearField(6);
+  @$pb.TagNumber(6)
+  CallIndices ensureBondCallIndices() => $_ensure(5);
+
+  /// Staking.Nominate call indices
+  @$pb.TagNumber(7)
+  CallIndices get nominateCallIndices => $_getN(6);
+  @$pb.TagNumber(7)
+  set nominateCallIndices(CallIndices v) { setField(7, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasNominateCallIndices() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearNominateCallIndices() => clearField(7);
+  @$pb.TagNumber(7)
+  CallIndices ensureNominateCallIndices() => $_ensure(6);
+}
+
+/// Bond extra, with nominators
+class Staking_BondExtraAndNominate extends $pb.GeneratedMessage {
+  factory Staking_BondExtraAndNominate({
+    $core.List<$core.int>? value,
+    $core.Iterable<$core.String>? nominators,
+    CallIndices? callIndices,
+    CallIndices? bondExtraCallIndices,
+    CallIndices? nominateCallIndices,
+  }) {
+    final $result = create();
+    if (value != null) {
+      $result.value = value;
+    }
+    if (nominators != null) {
+      $result.nominators.addAll(nominators);
+    }
+    if (callIndices != null) {
+      $result.callIndices = callIndices;
+    }
+    if (bondExtraCallIndices != null) {
+      $result.bondExtraCallIndices = bondExtraCallIndices;
+    }
+    if (nominateCallIndices != null) {
+      $result.nominateCallIndices = nominateCallIndices;
+    }
+    return $result;
+  }
+  Staking_BondExtraAndNominate._() : super();
+  factory Staking_BondExtraAndNominate.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Staking_BondExtraAndNominate.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Staking.BondExtraAndNominate', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Polkadot.Proto'), createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(1, _omitFieldNames ? '' : 'value', $pb.PbFieldType.OY)
+    ..pPS(2, _omitFieldNames ? '' : 'nominators')
+    ..aOM<CallIndices>(3, _omitFieldNames ? '' : 'callIndices', subBuilder: CallIndices.create)
+    ..aOM<CallIndices>(4, _omitFieldNames ? '' : 'bondExtraCallIndices', subBuilder: CallIndices.create)
+    ..aOM<CallIndices>(5, _omitFieldNames ? '' : 'nominateCallIndices', subBuilder: CallIndices.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Staking_BondExtraAndNominate clone() => Staking_BondExtraAndNominate()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Staking_BondExtraAndNominate copyWith(void Function(Staking_BondExtraAndNominate) updates) => super.copyWith((message) => updates(message as Staking_BondExtraAndNominate)) as Staking_BondExtraAndNominate;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Staking_BondExtraAndNominate create() => Staking_BondExtraAndNominate._();
+  Staking_BondExtraAndNominate createEmptyInstance() => create();
+  static $pb.PbList<Staking_BondExtraAndNominate> createRepeated() => $pb.PbList<Staking_BondExtraAndNominate>();
+  @$core.pragma('dart2js:noInline')
+  static Staking_BondExtraAndNominate getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Staking_BondExtraAndNominate>(create);
+  static Staking_BondExtraAndNominate? _defaultInstance;
+
+  /// amount (uint256, serialized big endian)
+  @$pb.TagNumber(1)
+  $core.List<$core.int> get value => $_getN(0);
+  @$pb.TagNumber(1)
+  set value($core.List<$core.int> v) { $_setBytes(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasValue() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearValue() => clearField(1);
+
+  /// list of nominators
+  @$pb.TagNumber(2)
+  $core.List<$core.String> get nominators => $_getList(1);
+
+  /// Batch call indices
+  @$pb.TagNumber(3)
+  CallIndices get callIndices => $_getN(2);
+  @$pb.TagNumber(3)
+  set callIndices(CallIndices v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasCallIndices() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearCallIndices() => clearField(3);
+  @$pb.TagNumber(3)
+  CallIndices ensureCallIndices() => $_ensure(2);
+
+  /// Staking.BondExtra call indices
+  @$pb.TagNumber(4)
+  CallIndices get bondExtraCallIndices => $_getN(3);
+  @$pb.TagNumber(4)
+  set bondExtraCallIndices(CallIndices v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasBondExtraCallIndices() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearBondExtraCallIndices() => clearField(4);
+  @$pb.TagNumber(4)
+  CallIndices ensureBondExtraCallIndices() => $_ensure(3);
+
+  /// Staking.Nominate call indices
+  @$pb.TagNumber(5)
+  CallIndices get nominateCallIndices => $_getN(4);
+  @$pb.TagNumber(5)
+  set nominateCallIndices(CallIndices v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasNominateCallIndices() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearNominateCallIndices() => clearField(5);
+  @$pb.TagNumber(5)
+  CallIndices ensureNominateCallIndices() => $_ensure(4);
 }
 
 /// Bond extra amount
@@ -1242,6 +1388,8 @@ class Staking_ChillAndUnbond extends $pb.GeneratedMessage {
   factory Staking_ChillAndUnbond({
     $core.List<$core.int>? value,
     CallIndices? callIndices,
+    CallIndices? chillCallIndices,
+    CallIndices? unbondCallIndices,
   }) {
     final $result = create();
     if (value != null) {
@@ -1249,6 +1397,12 @@ class Staking_ChillAndUnbond extends $pb.GeneratedMessage {
     }
     if (callIndices != null) {
       $result.callIndices = callIndices;
+    }
+    if (chillCallIndices != null) {
+      $result.chillCallIndices = chillCallIndices;
+    }
+    if (unbondCallIndices != null) {
+      $result.unbondCallIndices = unbondCallIndices;
     }
     return $result;
   }
@@ -1259,6 +1413,8 @@ class Staking_ChillAndUnbond extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Staking.ChillAndUnbond', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Polkadot.Proto'), createEmptyInstance: create)
     ..a<$core.List<$core.int>>(1, _omitFieldNames ? '' : 'value', $pb.PbFieldType.OY)
     ..aOM<CallIndices>(2, _omitFieldNames ? '' : 'callIndices', subBuilder: CallIndices.create)
+    ..aOM<CallIndices>(3, _omitFieldNames ? '' : 'chillCallIndices', subBuilder: CallIndices.create)
+    ..aOM<CallIndices>(4, _omitFieldNames ? '' : 'unbondCallIndices', subBuilder: CallIndices.create)
     ..hasRequiredFields = false
   ;
 
@@ -1304,6 +1460,30 @@ class Staking_ChillAndUnbond extends $pb.GeneratedMessage {
   void clearCallIndices() => clearField(2);
   @$pb.TagNumber(2)
   CallIndices ensureCallIndices() => $_ensure(1);
+
+  /// Staking.Chill call indices
+  @$pb.TagNumber(3)
+  CallIndices get chillCallIndices => $_getN(2);
+  @$pb.TagNumber(3)
+  set chillCallIndices(CallIndices v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasChillCallIndices() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearChillCallIndices() => clearField(3);
+  @$pb.TagNumber(3)
+  CallIndices ensureChillCallIndices() => $_ensure(2);
+
+  /// Staking.Unbond call indices
+  @$pb.TagNumber(4)
+  CallIndices get unbondCallIndices => $_getN(3);
+  @$pb.TagNumber(4)
+  set unbondCallIndices(CallIndices v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasUnbondCallIndices() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearUnbondCallIndices() => clearField(4);
+  @$pb.TagNumber(4)
+  CallIndices ensureUnbondCallIndices() => $_ensure(3);
 }
 
 /// Chill
@@ -1370,6 +1550,7 @@ enum Staking_MessageOneof {
   chill, 
   chillAndUnbond, 
   rebond, 
+  bondExtraAndNominate, 
   notSet
 }
 
@@ -1385,6 +1566,7 @@ class Staking extends $pb.GeneratedMessage {
     Staking_Chill? chill,
     Staking_ChillAndUnbond? chillAndUnbond,
     Staking_Rebond? rebond,
+    Staking_BondExtraAndNominate? bondExtraAndNominate,
   }) {
     final $result = create();
     if (bond != null) {
@@ -1414,6 +1596,9 @@ class Staking extends $pb.GeneratedMessage {
     if (rebond != null) {
       $result.rebond = rebond;
     }
+    if (bondExtraAndNominate != null) {
+      $result.bondExtraAndNominate = bondExtraAndNominate;
+    }
     return $result;
   }
   Staking._() : super();
@@ -1430,10 +1615,11 @@ class Staking extends $pb.GeneratedMessage {
     7 : Staking_MessageOneof.chill,
     8 : Staking_MessageOneof.chillAndUnbond,
     9 : Staking_MessageOneof.rebond,
+    10 : Staking_MessageOneof.bondExtraAndNominate,
     0 : Staking_MessageOneof.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Staking', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Polkadot.Proto'), createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     ..aOM<Staking_Bond>(1, _omitFieldNames ? '' : 'bond', subBuilder: Staking_Bond.create)
     ..aOM<Staking_BondAndNominate>(2, _omitFieldNames ? '' : 'bondAndNominate', subBuilder: Staking_BondAndNominate.create)
     ..aOM<Staking_BondExtra>(3, _omitFieldNames ? '' : 'bondExtra', subBuilder: Staking_BondExtra.create)
@@ -1443,6 +1629,7 @@ class Staking extends $pb.GeneratedMessage {
     ..aOM<Staking_Chill>(7, _omitFieldNames ? '' : 'chill', subBuilder: Staking_Chill.create)
     ..aOM<Staking_ChillAndUnbond>(8, _omitFieldNames ? '' : 'chillAndUnbond', subBuilder: Staking_ChillAndUnbond.create)
     ..aOM<Staking_Rebond>(9, _omitFieldNames ? '' : 'rebond', subBuilder: Staking_Rebond.create)
+    ..aOM<Staking_BondExtraAndNominate>(10, _omitFieldNames ? '' : 'bondExtraAndNominate', subBuilder: Staking_BondExtraAndNominate.create)
     ..hasRequiredFields = false
   ;
 
@@ -1568,469 +1755,22 @@ class Staking extends $pb.GeneratedMessage {
   void clearRebond() => clearField(9);
   @$pb.TagNumber(9)
   Staking_Rebond ensureRebond() => $_ensure(8);
-}
 
-/// Identity::join_identity_as_key call
-class Identity_JoinIdentityAsKey extends $pb.GeneratedMessage {
-  factory Identity_JoinIdentityAsKey({
-    CallIndices? callIndices,
-    $fixnum.Int64? authId,
-  }) {
-    final $result = create();
-    if (callIndices != null) {
-      $result.callIndices = callIndices;
-    }
-    if (authId != null) {
-      $result.authId = authId;
-    }
-    return $result;
-  }
-  Identity_JoinIdentityAsKey._() : super();
-  factory Identity_JoinIdentityAsKey.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Identity_JoinIdentityAsKey.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Identity.JoinIdentityAsKey', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Polkadot.Proto'), createEmptyInstance: create)
-    ..aOM<CallIndices>(1, _omitFieldNames ? '' : 'callIndices', subBuilder: CallIndices.create)
-    ..a<$fixnum.Int64>(2, _omitFieldNames ? '' : 'authId', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  Identity_JoinIdentityAsKey clone() => Identity_JoinIdentityAsKey()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Identity_JoinIdentityAsKey copyWith(void Function(Identity_JoinIdentityAsKey) updates) => super.copyWith((message) => updates(message as Identity_JoinIdentityAsKey)) as Identity_JoinIdentityAsKey;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static Identity_JoinIdentityAsKey create() => Identity_JoinIdentityAsKey._();
-  Identity_JoinIdentityAsKey createEmptyInstance() => create();
-  static $pb.PbList<Identity_JoinIdentityAsKey> createRepeated() => $pb.PbList<Identity_JoinIdentityAsKey>();
-  @$core.pragma('dart2js:noInline')
-  static Identity_JoinIdentityAsKey getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Identity_JoinIdentityAsKey>(create);
-  static Identity_JoinIdentityAsKey? _defaultInstance;
-
-  /// call indices
-  @$pb.TagNumber(1)
-  CallIndices get callIndices => $_getN(0);
-  @$pb.TagNumber(1)
-  set callIndices(CallIndices v) { setField(1, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasCallIndices() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearCallIndices() => clearField(1);
-  @$pb.TagNumber(1)
-  CallIndices ensureCallIndices() => $_ensure(0);
-
-  /// auth id
-  @$pb.TagNumber(2)
-  $fixnum.Int64 get authId => $_getI64(1);
-  @$pb.TagNumber(2)
-  set authId($fixnum.Int64 v) { $_setInt64(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasAuthId() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearAuthId() => clearField(2);
-}
-
-class Identity_AddAuthorization_Data extends $pb.GeneratedMessage {
-  factory Identity_AddAuthorization_Data({
-    $core.List<$core.int>? data,
-  }) {
-    final $result = create();
-    if (data != null) {
-      $result.data = data;
-    }
-    return $result;
-  }
-  Identity_AddAuthorization_Data._() : super();
-  factory Identity_AddAuthorization_Data.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Identity_AddAuthorization_Data.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Identity.AddAuthorization.Data', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Polkadot.Proto'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, _omitFieldNames ? '' : 'data', $pb.PbFieldType.OY)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  Identity_AddAuthorization_Data clone() => Identity_AddAuthorization_Data()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Identity_AddAuthorization_Data copyWith(void Function(Identity_AddAuthorization_Data) updates) => super.copyWith((message) => updates(message as Identity_AddAuthorization_Data)) as Identity_AddAuthorization_Data;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static Identity_AddAuthorization_Data create() => Identity_AddAuthorization_Data._();
-  Identity_AddAuthorization_Data createEmptyInstance() => create();
-  static $pb.PbList<Identity_AddAuthorization_Data> createRepeated() => $pb.PbList<Identity_AddAuthorization_Data>();
-  @$core.pragma('dart2js:noInline')
-  static Identity_AddAuthorization_Data getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Identity_AddAuthorization_Data>(create);
-  static Identity_AddAuthorization_Data? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.List<$core.int> get data => $_getN(0);
-  @$pb.TagNumber(1)
-  set data($core.List<$core.int> v) { $_setBytes(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasData() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearData() => clearField(1);
-}
-
-class Identity_AddAuthorization_AuthData extends $pb.GeneratedMessage {
-  factory Identity_AddAuthorization_AuthData({
-    Identity_AddAuthorization_Data? asset,
-    Identity_AddAuthorization_Data? extrinsic,
-    Identity_AddAuthorization_Data? portfolio,
-  }) {
-    final $result = create();
-    if (asset != null) {
-      $result.asset = asset;
-    }
-    if (extrinsic != null) {
-      $result.extrinsic = extrinsic;
-    }
-    if (portfolio != null) {
-      $result.portfolio = portfolio;
-    }
-    return $result;
-  }
-  Identity_AddAuthorization_AuthData._() : super();
-  factory Identity_AddAuthorization_AuthData.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Identity_AddAuthorization_AuthData.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Identity.AddAuthorization.AuthData', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Polkadot.Proto'), createEmptyInstance: create)
-    ..aOM<Identity_AddAuthorization_Data>(1, _omitFieldNames ? '' : 'asset', subBuilder: Identity_AddAuthorization_Data.create)
-    ..aOM<Identity_AddAuthorization_Data>(2, _omitFieldNames ? '' : 'extrinsic', subBuilder: Identity_AddAuthorization_Data.create)
-    ..aOM<Identity_AddAuthorization_Data>(3, _omitFieldNames ? '' : 'portfolio', subBuilder: Identity_AddAuthorization_Data.create)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  Identity_AddAuthorization_AuthData clone() => Identity_AddAuthorization_AuthData()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Identity_AddAuthorization_AuthData copyWith(void Function(Identity_AddAuthorization_AuthData) updates) => super.copyWith((message) => updates(message as Identity_AddAuthorization_AuthData)) as Identity_AddAuthorization_AuthData;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static Identity_AddAuthorization_AuthData create() => Identity_AddAuthorization_AuthData._();
-  Identity_AddAuthorization_AuthData createEmptyInstance() => create();
-  static $pb.PbList<Identity_AddAuthorization_AuthData> createRepeated() => $pb.PbList<Identity_AddAuthorization_AuthData>();
-  @$core.pragma('dart2js:noInline')
-  static Identity_AddAuthorization_AuthData getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Identity_AddAuthorization_AuthData>(create);
-  static Identity_AddAuthorization_AuthData? _defaultInstance;
-
-  /// authorization data, empty means all permissions, null means no permissions
-  @$pb.TagNumber(1)
-  Identity_AddAuthorization_Data get asset => $_getN(0);
-  @$pb.TagNumber(1)
-  set asset(Identity_AddAuthorization_Data v) { setField(1, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasAsset() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearAsset() => clearField(1);
-  @$pb.TagNumber(1)
-  Identity_AddAuthorization_Data ensureAsset() => $_ensure(0);
-
-  /// authorization data, empty means all permissions, null means no permissions
-  @$pb.TagNumber(2)
-  Identity_AddAuthorization_Data get extrinsic => $_getN(1);
-  @$pb.TagNumber(2)
-  set extrinsic(Identity_AddAuthorization_Data v) { setField(2, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasExtrinsic() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearExtrinsic() => clearField(2);
-  @$pb.TagNumber(2)
-  Identity_AddAuthorization_Data ensureExtrinsic() => $_ensure(1);
-
-  /// authorization data, empty means all permissions, null means no permissions
-  @$pb.TagNumber(3)
-  Identity_AddAuthorization_Data get portfolio => $_getN(2);
-  @$pb.TagNumber(3)
-  set portfolio(Identity_AddAuthorization_Data v) { setField(3, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasPortfolio() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearPortfolio() => clearField(3);
-  @$pb.TagNumber(3)
-  Identity_AddAuthorization_Data ensurePortfolio() => $_ensure(2);
-}
-
-/// Identity::add_authorization call
-class Identity_AddAuthorization extends $pb.GeneratedMessage {
-  factory Identity_AddAuthorization({
-    CallIndices? callIndices,
-    $core.String? target,
-    Identity_AddAuthorization_AuthData? data,
-    $fixnum.Int64? expiry,
-  }) {
-    final $result = create();
-    if (callIndices != null) {
-      $result.callIndices = callIndices;
-    }
-    if (target != null) {
-      $result.target = target;
-    }
-    if (data != null) {
-      $result.data = data;
-    }
-    if (expiry != null) {
-      $result.expiry = expiry;
-    }
-    return $result;
-  }
-  Identity_AddAuthorization._() : super();
-  factory Identity_AddAuthorization.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Identity_AddAuthorization.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Identity.AddAuthorization', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Polkadot.Proto'), createEmptyInstance: create)
-    ..aOM<CallIndices>(1, _omitFieldNames ? '' : 'callIndices', subBuilder: CallIndices.create)
-    ..aOS(2, _omitFieldNames ? '' : 'target')
-    ..aOM<Identity_AddAuthorization_AuthData>(3, _omitFieldNames ? '' : 'data', subBuilder: Identity_AddAuthorization_AuthData.create)
-    ..a<$fixnum.Int64>(4, _omitFieldNames ? '' : 'expiry', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  Identity_AddAuthorization clone() => Identity_AddAuthorization()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Identity_AddAuthorization copyWith(void Function(Identity_AddAuthorization) updates) => super.copyWith((message) => updates(message as Identity_AddAuthorization)) as Identity_AddAuthorization;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static Identity_AddAuthorization create() => Identity_AddAuthorization._();
-  Identity_AddAuthorization createEmptyInstance() => create();
-  static $pb.PbList<Identity_AddAuthorization> createRepeated() => $pb.PbList<Identity_AddAuthorization>();
-  @$core.pragma('dart2js:noInline')
-  static Identity_AddAuthorization getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Identity_AddAuthorization>(create);
-  static Identity_AddAuthorization? _defaultInstance;
-
-  /// call indices
-  @$pb.TagNumber(1)
-  CallIndices get callIndices => $_getN(0);
-  @$pb.TagNumber(1)
-  set callIndices(CallIndices v) { setField(1, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasCallIndices() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearCallIndices() => clearField(1);
-  @$pb.TagNumber(1)
-  CallIndices ensureCallIndices() => $_ensure(0);
-
-  /// address that will be added to the Identity
-  @$pb.TagNumber(2)
-  $core.String get target => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set target($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasTarget() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearTarget() => clearField(2);
-
-  /// authorization data, null means all permissions
-  @$pb.TagNumber(3)
-  Identity_AddAuthorization_AuthData get data => $_getN(2);
-  @$pb.TagNumber(3)
-  set data(Identity_AddAuthorization_AuthData v) { setField(3, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasData() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearData() => clearField(3);
-  @$pb.TagNumber(3)
-  Identity_AddAuthorization_AuthData ensureData() => $_ensure(2);
-
-  /// expire time, unix seconds
-  @$pb.TagNumber(4)
-  $fixnum.Int64 get expiry => $_getI64(3);
-  @$pb.TagNumber(4)
-  set expiry($fixnum.Int64 v) { $_setInt64(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasExpiry() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearExpiry() => clearField(4);
-}
-
-enum Identity_MessageOneof {
-  joinIdentityAsKey, 
-  addAuthorization, 
-  notSet
-}
-
-/// Identity module
-class Identity extends $pb.GeneratedMessage {
-  factory Identity({
-    Identity_JoinIdentityAsKey? joinIdentityAsKey,
-    Identity_AddAuthorization? addAuthorization,
-  }) {
-    final $result = create();
-    if (joinIdentityAsKey != null) {
-      $result.joinIdentityAsKey = joinIdentityAsKey;
-    }
-    if (addAuthorization != null) {
-      $result.addAuthorization = addAuthorization;
-    }
-    return $result;
-  }
-  Identity._() : super();
-  factory Identity.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Identity.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static const $core.Map<$core.int, Identity_MessageOneof> _Identity_MessageOneofByTag = {
-    1 : Identity_MessageOneof.joinIdentityAsKey,
-    2 : Identity_MessageOneof.addAuthorization,
-    0 : Identity_MessageOneof.notSet
-  };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Identity', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Polkadot.Proto'), createEmptyInstance: create)
-    ..oo(0, [1, 2])
-    ..aOM<Identity_JoinIdentityAsKey>(1, _omitFieldNames ? '' : 'joinIdentityAsKey', subBuilder: Identity_JoinIdentityAsKey.create)
-    ..aOM<Identity_AddAuthorization>(2, _omitFieldNames ? '' : 'addAuthorization', subBuilder: Identity_AddAuthorization.create)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  Identity clone() => Identity()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Identity copyWith(void Function(Identity) updates) => super.copyWith((message) => updates(message as Identity)) as Identity;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static Identity create() => Identity._();
-  Identity createEmptyInstance() => create();
-  static $pb.PbList<Identity> createRepeated() => $pb.PbList<Identity>();
-  @$core.pragma('dart2js:noInline')
-  static Identity getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Identity>(create);
-  static Identity? _defaultInstance;
-
-  Identity_MessageOneof whichMessageOneof() => _Identity_MessageOneofByTag[$_whichOneof(0)]!;
-  void clearMessageOneof() => clearField($_whichOneof(0));
-
-  @$pb.TagNumber(1)
-  Identity_JoinIdentityAsKey get joinIdentityAsKey => $_getN(0);
-  @$pb.TagNumber(1)
-  set joinIdentityAsKey(Identity_JoinIdentityAsKey v) { setField(1, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasJoinIdentityAsKey() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearJoinIdentityAsKey() => clearField(1);
-  @$pb.TagNumber(1)
-  Identity_JoinIdentityAsKey ensureJoinIdentityAsKey() => $_ensure(0);
-
-  @$pb.TagNumber(2)
-  Identity_AddAuthorization get addAuthorization => $_getN(1);
-  @$pb.TagNumber(2)
-  set addAuthorization(Identity_AddAuthorization v) { setField(2, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasAddAuthorization() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearAddAuthorization() => clearField(2);
-  @$pb.TagNumber(2)
-  Identity_AddAuthorization ensureAddAuthorization() => $_ensure(1);
-}
-
-enum PolymeshCall_MessageOneof {
-  identityCall, 
-  notSet
-}
-
-/// Polymesh call
-class PolymeshCall extends $pb.GeneratedMessage {
-  factory PolymeshCall({
-    Identity? identityCall,
-  }) {
-    final $result = create();
-    if (identityCall != null) {
-      $result.identityCall = identityCall;
-    }
-    return $result;
-  }
-  PolymeshCall._() : super();
-  factory PolymeshCall.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory PolymeshCall.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static const $core.Map<$core.int, PolymeshCall_MessageOneof> _PolymeshCall_MessageOneofByTag = {
-    2 : PolymeshCall_MessageOneof.identityCall,
-    0 : PolymeshCall_MessageOneof.notSet
-  };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PolymeshCall', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Polkadot.Proto'), createEmptyInstance: create)
-    ..oo(0, [2])
-    ..aOM<Identity>(2, _omitFieldNames ? '' : 'identityCall', subBuilder: Identity.create)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  PolymeshCall clone() => PolymeshCall()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  PolymeshCall copyWith(void Function(PolymeshCall) updates) => super.copyWith((message) => updates(message as PolymeshCall)) as PolymeshCall;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static PolymeshCall create() => PolymeshCall._();
-  PolymeshCall createEmptyInstance() => create();
-  static $pb.PbList<PolymeshCall> createRepeated() => $pb.PbList<PolymeshCall>();
-  @$core.pragma('dart2js:noInline')
-  static PolymeshCall getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PolymeshCall>(create);
-  static PolymeshCall? _defaultInstance;
-
-  PolymeshCall_MessageOneof whichMessageOneof() => _PolymeshCall_MessageOneofByTag[$_whichOneof(0)]!;
-  void clearMessageOneof() => clearField($_whichOneof(0));
-
-  @$pb.TagNumber(2)
-  Identity get identityCall => $_getN(0);
-  @$pb.TagNumber(2)
-  set identityCall(Identity v) { setField(2, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasIdentityCall() => $_has(0);
-  @$pb.TagNumber(2)
-  void clearIdentityCall() => clearField(2);
-  @$pb.TagNumber(2)
-  Identity ensureIdentityCall() => $_ensure(0);
+  @$pb.TagNumber(10)
+  Staking_BondExtraAndNominate get bondExtraAndNominate => $_getN(9);
+  @$pb.TagNumber(10)
+  set bondExtraAndNominate(Staking_BondExtraAndNominate v) { setField(10, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasBondExtraAndNominate() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearBondExtraAndNominate() => clearField(10);
+  @$pb.TagNumber(10)
+  Staking_BondExtraAndNominate ensureBondExtraAndNominate() => $_ensure(9);
 }
 
 enum SigningInput_MessageOneof {
   balanceCall, 
   stakingCall, 
-  polymeshCall, 
   notSet
 }
 
@@ -2049,7 +1789,7 @@ class SigningInput extends $pb.GeneratedMessage {
     $core.bool? multiAddress,
     Balance? balanceCall,
     Staking? stakingCall,
-    PolymeshCall? polymeshCall,
+    $core.bool? chargeNativeAsAssetTxPayment,
   }) {
     final $result = create();
     if (blockHash != null) {
@@ -2088,8 +1828,8 @@ class SigningInput extends $pb.GeneratedMessage {
     if (stakingCall != null) {
       $result.stakingCall = stakingCall;
     }
-    if (polymeshCall != null) {
-      $result.polymeshCall = polymeshCall;
+    if (chargeNativeAsAssetTxPayment != null) {
+      $result.chargeNativeAsAssetTxPayment = chargeNativeAsAssetTxPayment;
     }
     return $result;
   }
@@ -2100,11 +1840,10 @@ class SigningInput extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, SigningInput_MessageOneof> _SigningInput_MessageOneofByTag = {
     11 : SigningInput_MessageOneof.balanceCall,
     12 : SigningInput_MessageOneof.stakingCall,
-    13 : SigningInput_MessageOneof.polymeshCall,
     0 : SigningInput_MessageOneof.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SigningInput', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Polkadot.Proto'), createEmptyInstance: create)
-    ..oo(0, [11, 12, 13])
+    ..oo(0, [11, 12])
     ..a<$core.List<$core.int>>(1, _omitFieldNames ? '' : 'blockHash', $pb.PbFieldType.OY)
     ..a<$core.List<$core.int>>(2, _omitFieldNames ? '' : 'genesisHash', $pb.PbFieldType.OY)
     ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'nonce', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
@@ -2117,7 +1856,7 @@ class SigningInput extends $pb.GeneratedMessage {
     ..aOB(10, _omitFieldNames ? '' : 'multiAddress')
     ..aOM<Balance>(11, _omitFieldNames ? '' : 'balanceCall', subBuilder: Balance.create)
     ..aOM<Staking>(12, _omitFieldNames ? '' : 'stakingCall', subBuilder: Staking.create)
-    ..aOM<PolymeshCall>(13, _omitFieldNames ? '' : 'polymeshCall', subBuilder: PolymeshCall.create)
+    ..aOB(13, _omitFieldNames ? '' : 'chargeNativeAsAssetTxPayment')
     ..hasRequiredFields = false
   ;
 
@@ -2269,16 +2008,16 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(12)
   Staking ensureStakingCall() => $_ensure(11);
 
+  /// Whether to use `ChargeAssetTxPayment` extrinsic extension instead of `ChargeTransactionPayment`
+  /// when paying transaction tip in native chain token.
   @$pb.TagNumber(13)
-  PolymeshCall get polymeshCall => $_getN(12);
+  $core.bool get chargeNativeAsAssetTxPayment => $_getBF(12);
   @$pb.TagNumber(13)
-  set polymeshCall(PolymeshCall v) { setField(13, v); }
+  set chargeNativeAsAssetTxPayment($core.bool v) { $_setBool(12, v); }
   @$pb.TagNumber(13)
-  $core.bool hasPolymeshCall() => $_has(12);
+  $core.bool hasChargeNativeAsAssetTxPayment() => $_has(12);
   @$pb.TagNumber(13)
-  void clearPolymeshCall() => clearField(13);
-  @$pb.TagNumber(13)
-  PolymeshCall ensurePolymeshCall() => $_ensure(12);
+  void clearChargeNativeAsAssetTxPayment() => clearField(13);
 }
 
 /// Result containing the signed and encoded transaction.

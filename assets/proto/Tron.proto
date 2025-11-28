@@ -3,6 +3,8 @@ syntax = "proto3";
 package TW.Tron.Proto;
 option java_package = "wallet.core.jni.proto";
 
+import "Common.proto";
+
 // A transfer transaction
 message TransferContract {
     // Sender address.
@@ -226,8 +228,11 @@ message Transaction {
     // Transaction block header.
     BlockHeader block_header = 3;
 
-    // Transaction fee limit
+    // Transaction fee limit.
     int64 fee_limit = 4;
+
+    // Transaction memo.
+    string memo = 5;
 
     // Contract.
     oneof contract_oneof {
@@ -258,7 +263,11 @@ message SigningInput {
     bytes private_key = 2;
 
     // For direct sign in Tron, we just have to sign the txId returned by the DApp json payload.
+    // TODO: This field can be removed in the future, as we can use raw_json.txID instead.
     string txId = 3;
+
+    // Raw JSON data from the DApp, which contains fields 'txID', 'raw_data' and 'raw_data_hex' normally.
+    string raw_json = 4;
 }
 
 // Result containing the signed and encoded transaction.
@@ -274,4 +283,10 @@ message SigningOutput {
 
     // Result in JSON
     string json = 5;
+
+    // error code, 0 is ok, other codes will be treated as errors
+    Common.Proto.SigningError error = 6;
+
+    // error code description
+    string error_message = 7;
 }

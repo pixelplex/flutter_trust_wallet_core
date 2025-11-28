@@ -25,10 +25,10 @@ message Asset {
 
 // Input data necessary to create a signed transaction.
 message SigningInput {
-    // Chain id (uint256, serialized little endian)
+    // Chain id (uint256, serialized big endian)
     bytes chain_id = 1;
 
-    // Reference Block Id (uint256, serialized little endian)
+    // Reference Block Id (uint256, serialized big endian)
     bytes reference_block_id = 2;
 
     // Timestamp on the reference block
@@ -54,6 +54,9 @@ message SigningInput {
 
     // Type of the private key
     KeyType private_key_type = 10;
+
+    // Expiration of the transaction, if not set, default is reference_block_time + 3600 seconds
+    sfixed32 expiration = 11;
 }
 
 // Result containing the signed and encoded transaction.
@@ -63,4 +66,7 @@ message SigningOutput {
 
     // Optional error
     Common.Proto.SigningError error = 2;
+
+    // error code description
+    string error_message = 3;
 }

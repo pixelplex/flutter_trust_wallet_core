@@ -1,0 +1,28 @@
+{
+  "buildFiles": [
+    "/Users/anastasiyakirzner/fvm/versions/3.29.1/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/anastasiyakirzner/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/anastasiyakirzner/pixel/flutter_trust_wallet_core/flutter_trust_wallet_core/example/android/app/.cxx/Debug/394o5i39/armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/anastasiyakirzner/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/anastasiyakirzner/pixel/flutter_trust_wallet_core/flutter_trust_wallet_core/example/android/app/.cxx/Debug/394o5i39/armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {},
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/Users/anastasiyakirzner/Library/Android/sdk/ndk/28.0.13004108/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang.lld",
+      "cppCompilerExecutable": "/Users/anastasiyakirzner/Library/Android/sdk/ndk/28.0.13004108/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++.lld"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": []
+}

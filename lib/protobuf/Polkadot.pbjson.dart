@@ -165,8 +165,9 @@ const Staking$json = {
     {'1': 'chill', '3': 7, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Staking.Chill', '9': 0, '10': 'chill'},
     {'1': 'chill_and_unbond', '3': 8, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Staking.ChillAndUnbond', '9': 0, '10': 'chillAndUnbond'},
     {'1': 'rebond', '3': 9, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Staking.Rebond', '9': 0, '10': 'rebond'},
+    {'1': 'bond_extra_and_nominate', '3': 10, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Staking.BondExtraAndNominate', '9': 0, '10': 'bondExtraAndNominate'},
   ],
-  '3': [Staking_Bond$json, Staking_BondAndNominate$json, Staking_BondExtra$json, Staking_Unbond$json, Staking_Rebond$json, Staking_WithdrawUnbonded$json, Staking_Nominate$json, Staking_ChillAndUnbond$json, Staking_Chill$json],
+  '3': [Staking_Bond$json, Staking_BondAndNominate$json, Staking_BondExtraAndNominate$json, Staking_BondExtra$json, Staking_Unbond$json, Staking_Rebond$json, Staking_WithdrawUnbonded$json, Staking_Nominate$json, Staking_ChillAndUnbond$json, Staking_Chill$json],
   '8': [
     {'1': 'message_oneof'},
   ],
@@ -192,6 +193,20 @@ const Staking_BondAndNominate$json = {
     {'1': 'reward_destination', '3': 3, '4': 1, '5': 14, '6': '.TW.Polkadot.Proto.RewardDestination', '10': 'rewardDestination'},
     {'1': 'nominators', '3': 4, '4': 3, '5': 9, '10': 'nominators'},
     {'1': 'call_indices', '3': 5, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
+    {'1': 'bond_call_indices', '3': 6, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'bondCallIndices'},
+    {'1': 'nominate_call_indices', '3': 7, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'nominateCallIndices'},
+  ],
+};
+
+@$core.Deprecated('Use stakingDescriptor instead')
+const Staking_BondExtraAndNominate$json = {
+  '1': 'BondExtraAndNominate',
+  '2': [
+    {'1': 'value', '3': 1, '4': 1, '5': 12, '10': 'value'},
+    {'1': 'nominators', '3': 2, '4': 3, '5': 9, '10': 'nominators'},
+    {'1': 'call_indices', '3': 3, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
+    {'1': 'bond_extra_call_indices', '3': 4, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'bondExtraCallIndices'},
+    {'1': 'nominate_call_indices', '3': 5, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'nominateCallIndices'},
   ],
 };
 
@@ -246,6 +261,8 @@ const Staking_ChillAndUnbond$json = {
   '2': [
     {'1': 'value', '3': 1, '4': 1, '5': 12, '10': 'value'},
     {'1': 'call_indices', '3': 2, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
+    {'1': 'chill_call_indices', '3': 3, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'chillCallIndices'},
+    {'1': 'unbond_call_indices', '3': 4, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'unbondCallIndices'},
   ],
 };
 
@@ -270,115 +287,42 @@ final $typed_data.Uint8List stakingDescriptor = $convert.base64Decode(
     'ZRI4CgVjaGlsbBgHIAEoCzIgLlRXLlBvbGthZG90LlByb3RvLlN0YWtpbmcuQ2hpbGxIAFIFY2'
     'hpbGwSVQoQY2hpbGxfYW5kX3VuYm9uZBgIIAEoCzIpLlRXLlBvbGthZG90LlByb3RvLlN0YWtp'
     'bmcuQ2hpbGxBbmRVbmJvbmRIAFIOY2hpbGxBbmRVbmJvbmQSOwoGcmVib25kGAkgASgLMiEuVF'
-    'cuUG9sa2Fkb3QuUHJvdG8uU3Rha2luZy5SZWJvbmRIAFIGcmVib25kGtQBCgRCb25kEh4KCmNv'
-    'bnRyb2xsZXIYASABKAlSCmNvbnRyb2xsZXISFAoFdmFsdWUYAiABKAxSBXZhbHVlElMKEnJld2'
-    'FyZF9kZXN0aW5hdGlvbhgDIAEoDjIkLlRXLlBvbGthZG90LlByb3RvLlJld2FyZERlc3RpbmF0'
-    'aW9uUhFyZXdhcmREZXN0aW5hdGlvbhJBCgxjYWxsX2luZGljZXMYBCABKAsyHi5UVy5Qb2xrYW'
-    'RvdC5Qcm90by5DYWxsSW5kaWNlc1ILY2FsbEluZGljZXMa/wEKD0JvbmRBbmROb21pbmF0ZRIe'
-    'Cgpjb250cm9sbGVyGAEgASgJUgpjb250cm9sbGVyEhQKBXZhbHVlGAIgASgMUgV2YWx1ZRJTCh'
-    'JyZXdhcmRfZGVzdGluYXRpb24YAyABKA4yJC5UVy5Qb2xrYWRvdC5Qcm90by5SZXdhcmREZXN0'
-    'aW5hdGlvblIRcmV3YXJkRGVzdGluYXRpb24SHgoKbm9taW5hdG9ycxgEIAMoCVIKbm9taW5hdG'
-    '9ycxJBCgxjYWxsX2luZGljZXMYBSABKAsyHi5UVy5Qb2xrYWRvdC5Qcm90by5DYWxsSW5kaWNl'
-    'c1ILY2FsbEluZGljZXMaZAoJQm9uZEV4dHJhEhQKBXZhbHVlGAEgASgMUgV2YWx1ZRJBCgxjYW'
-    'xsX2luZGljZXMYAiABKAsyHi5UVy5Qb2xrYWRvdC5Qcm90by5DYWxsSW5kaWNlc1ILY2FsbElu'
-    'ZGljZXMaYQoGVW5ib25kEhQKBXZhbHVlGAEgASgMUgV2YWx1ZRJBCgxjYWxsX2luZGljZXMYAi'
-    'ABKAsyHi5UVy5Qb2xrYWRvdC5Qcm90by5DYWxsSW5kaWNlc1ILY2FsbEluZGljZXMaYQoGUmVi'
-    'b25kEhQKBXZhbHVlGAEgASgMUgV2YWx1ZRJBCgxjYWxsX2luZGljZXMYAiABKAsyHi5UVy5Qb2'
-    'xrYWRvdC5Qcm90by5DYWxsSW5kaWNlc1ILY2FsbEluZGljZXMafAoQV2l0aGRyYXdVbmJvbmRl'
-    'ZBIlCg5zbGFzaGluZ19zcGFucxgBIAEoBVINc2xhc2hpbmdTcGFucxJBCgxjYWxsX2luZGljZX'
-    'MYAiABKAsyHi5UVy5Qb2xrYWRvdC5Qcm90by5DYWxsSW5kaWNlc1ILY2FsbEluZGljZXMabQoI'
-    'Tm9taW5hdGUSHgoKbm9taW5hdG9ycxgBIAMoCVIKbm9taW5hdG9ycxJBCgxjYWxsX2luZGljZX'
-    'MYAiABKAsyHi5UVy5Qb2xrYWRvdC5Qcm90by5DYWxsSW5kaWNlc1ILY2FsbEluZGljZXMaaQoO'
-    'Q2hpbGxBbmRVbmJvbmQSFAoFdmFsdWUYASABKAxSBXZhbHVlEkEKDGNhbGxfaW5kaWNlcxgCIA'
-    'EoCzIeLlRXLlBvbGthZG90LlByb3RvLkNhbGxJbmRpY2VzUgtjYWxsSW5kaWNlcxpKCgVDaGls'
-    'bBJBCgxjYWxsX2luZGljZXMYASABKAsyHi5UVy5Qb2xrYWRvdC5Qcm90by5DYWxsSW5kaWNlc1'
-    'ILY2FsbEluZGljZXNCDwoNbWVzc2FnZV9vbmVvZg==');
-
-@$core.Deprecated('Use identityDescriptor instead')
-const Identity$json = {
-  '1': 'Identity',
-  '2': [
-    {'1': 'join_identity_as_key', '3': 1, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Identity.JoinIdentityAsKey', '9': 0, '10': 'joinIdentityAsKey'},
-    {'1': 'add_authorization', '3': 2, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Identity.AddAuthorization', '9': 0, '10': 'addAuthorization'},
-  ],
-  '3': [Identity_JoinIdentityAsKey$json, Identity_AddAuthorization$json],
-  '8': [
-    {'1': 'message_oneof'},
-  ],
-};
-
-@$core.Deprecated('Use identityDescriptor instead')
-const Identity_JoinIdentityAsKey$json = {
-  '1': 'JoinIdentityAsKey',
-  '2': [
-    {'1': 'call_indices', '3': 1, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
-    {'1': 'auth_id', '3': 2, '4': 1, '5': 4, '10': 'authId'},
-  ],
-};
-
-@$core.Deprecated('Use identityDescriptor instead')
-const Identity_AddAuthorization$json = {
-  '1': 'AddAuthorization',
-  '2': [
-    {'1': 'call_indices', '3': 1, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
-    {'1': 'target', '3': 2, '4': 1, '5': 9, '10': 'target'},
-    {'1': 'data', '3': 3, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Identity.AddAuthorization.AuthData', '10': 'data'},
-    {'1': 'expiry', '3': 4, '4': 1, '5': 4, '10': 'expiry'},
-  ],
-  '3': [Identity_AddAuthorization_Data$json, Identity_AddAuthorization_AuthData$json],
-};
-
-@$core.Deprecated('Use identityDescriptor instead')
-const Identity_AddAuthorization_Data$json = {
-  '1': 'Data',
-  '2': [
-    {'1': 'data', '3': 1, '4': 1, '5': 12, '10': 'data'},
-  ],
-};
-
-@$core.Deprecated('Use identityDescriptor instead')
-const Identity_AddAuthorization_AuthData$json = {
-  '1': 'AuthData',
-  '2': [
-    {'1': 'asset', '3': 1, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Identity.AddAuthorization.Data', '10': 'asset'},
-    {'1': 'extrinsic', '3': 2, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Identity.AddAuthorization.Data', '10': 'extrinsic'},
-    {'1': 'portfolio', '3': 3, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Identity.AddAuthorization.Data', '10': 'portfolio'},
-  ],
-};
-
-/// Descriptor for `Identity`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List identityDescriptor = $convert.base64Decode(
-    'CghJZGVudGl0eRJgChRqb2luX2lkZW50aXR5X2FzX2tleRgBIAEoCzItLlRXLlBvbGthZG90Ll'
-    'Byb3RvLklkZW50aXR5LkpvaW5JZGVudGl0eUFzS2V5SABSEWpvaW5JZGVudGl0eUFzS2V5ElsK'
-    'EWFkZF9hdXRob3JpemF0aW9uGAIgASgLMiwuVFcuUG9sa2Fkb3QuUHJvdG8uSWRlbnRpdHkuQW'
-    'RkQXV0aG9yaXphdGlvbkgAUhBhZGRBdXRob3JpemF0aW9uGm8KEUpvaW5JZGVudGl0eUFzS2V5'
-    'EkEKDGNhbGxfaW5kaWNlcxgBIAEoCzIeLlRXLlBvbGthZG90LlByb3RvLkNhbGxJbmRpY2VzUg'
-    'tjYWxsSW5kaWNlcxIXCgdhdXRoX2lkGAIgASgEUgZhdXRoSWQa5AMKEEFkZEF1dGhvcml6YXRp'
-    'b24SQQoMY2FsbF9pbmRpY2VzGAEgASgLMh4uVFcuUG9sa2Fkb3QuUHJvdG8uQ2FsbEluZGljZX'
-    'NSC2NhbGxJbmRpY2VzEhYKBnRhcmdldBgCIAEoCVIGdGFyZ2V0EkkKBGRhdGEYAyABKAsyNS5U'
-    'Vy5Qb2xrYWRvdC5Qcm90by5JZGVudGl0eS5BZGRBdXRob3JpemF0aW9uLkF1dGhEYXRhUgRkYX'
-    'RhEhYKBmV4cGlyeRgEIAEoBFIGZXhwaXJ5GhoKBERhdGESEgoEZGF0YRgBIAEoDFIEZGF0YRr1'
-    'AQoIQXV0aERhdGESRwoFYXNzZXQYASABKAsyMS5UVy5Qb2xrYWRvdC5Qcm90by5JZGVudGl0eS'
-    '5BZGRBdXRob3JpemF0aW9uLkRhdGFSBWFzc2V0Ek8KCWV4dHJpbnNpYxgCIAEoCzIxLlRXLlBv'
-    'bGthZG90LlByb3RvLklkZW50aXR5LkFkZEF1dGhvcml6YXRpb24uRGF0YVIJZXh0cmluc2ljEk'
-    '8KCXBvcnRmb2xpbxgDIAEoCzIxLlRXLlBvbGthZG90LlByb3RvLklkZW50aXR5LkFkZEF1dGhv'
-    'cml6YXRpb24uRGF0YVIJcG9ydGZvbGlvQg8KDW1lc3NhZ2Vfb25lb2Y=');
-
-@$core.Deprecated('Use polymeshCallDescriptor instead')
-const PolymeshCall$json = {
-  '1': 'PolymeshCall',
-  '2': [
-    {'1': 'identity_call', '3': 2, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Identity', '9': 0, '10': 'identityCall'},
-  ],
-  '8': [
-    {'1': 'message_oneof'},
-  ],
-};
-
-/// Descriptor for `PolymeshCall`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List polymeshCallDescriptor = $convert.base64Decode(
-    'CgxQb2x5bWVzaENhbGwSQgoNaWRlbnRpdHlfY2FsbBgCIAEoCzIbLlRXLlBvbGthZG90LlByb3'
-    'RvLklkZW50aXR5SABSDGlkZW50aXR5Q2FsbEIPCg1tZXNzYWdlX29uZW9m');
+    'cuUG9sa2Fkb3QuUHJvdG8uU3Rha2luZy5SZWJvbmRIAFIGcmVib25kEmgKF2JvbmRfZXh0cmFf'
+    'YW5kX25vbWluYXRlGAogASgLMi8uVFcuUG9sa2Fkb3QuUHJvdG8uU3Rha2luZy5Cb25kRXh0cm'
+    'FBbmROb21pbmF0ZUgAUhRib25kRXh0cmFBbmROb21pbmF0ZRrUAQoEQm9uZBIeCgpjb250cm9s'
+    'bGVyGAEgASgJUgpjb250cm9sbGVyEhQKBXZhbHVlGAIgASgMUgV2YWx1ZRJTChJyZXdhcmRfZG'
+    'VzdGluYXRpb24YAyABKA4yJC5UVy5Qb2xrYWRvdC5Qcm90by5SZXdhcmREZXN0aW5hdGlvblIR'
+    'cmV3YXJkRGVzdGluYXRpb24SQQoMY2FsbF9pbmRpY2VzGAQgASgLMh4uVFcuUG9sa2Fkb3QuUH'
+    'JvdG8uQ2FsbEluZGljZXNSC2NhbGxJbmRpY2VzGp8DCg9Cb25kQW5kTm9taW5hdGUSHgoKY29u'
+    'dHJvbGxlchgBIAEoCVIKY29udHJvbGxlchIUCgV2YWx1ZRgCIAEoDFIFdmFsdWUSUwoScmV3YX'
+    'JkX2Rlc3RpbmF0aW9uGAMgASgOMiQuVFcuUG9sa2Fkb3QuUHJvdG8uUmV3YXJkRGVzdGluYXRp'
+    'b25SEXJld2FyZERlc3RpbmF0aW9uEh4KCm5vbWluYXRvcnMYBCADKAlSCm5vbWluYXRvcnMSQQ'
+    'oMY2FsbF9pbmRpY2VzGAUgASgLMh4uVFcuUG9sa2Fkb3QuUHJvdG8uQ2FsbEluZGljZXNSC2Nh'
+    'bGxJbmRpY2VzEkoKEWJvbmRfY2FsbF9pbmRpY2VzGAYgASgLMh4uVFcuUG9sa2Fkb3QuUHJvdG'
+    '8uQ2FsbEluZGljZXNSD2JvbmRDYWxsSW5kaWNlcxJSChVub21pbmF0ZV9jYWxsX2luZGljZXMY'
+    'ByABKAsyHi5UVy5Qb2xrYWRvdC5Qcm90by5DYWxsSW5kaWNlc1ITbm9taW5hdGVDYWxsSW5kaW'
+    'Nlcxq6AgoUQm9uZEV4dHJhQW5kTm9taW5hdGUSFAoFdmFsdWUYASABKAxSBXZhbHVlEh4KCm5v'
+    'bWluYXRvcnMYAiADKAlSCm5vbWluYXRvcnMSQQoMY2FsbF9pbmRpY2VzGAMgASgLMh4uVFcuUG'
+    '9sa2Fkb3QuUHJvdG8uQ2FsbEluZGljZXNSC2NhbGxJbmRpY2VzElUKF2JvbmRfZXh0cmFfY2Fs'
+    'bF9pbmRpY2VzGAQgASgLMh4uVFcuUG9sa2Fkb3QuUHJvdG8uQ2FsbEluZGljZXNSFGJvbmRFeH'
+    'RyYUNhbGxJbmRpY2VzElIKFW5vbWluYXRlX2NhbGxfaW5kaWNlcxgFIAEoCzIeLlRXLlBvbGth'
+    'ZG90LlByb3RvLkNhbGxJbmRpY2VzUhNub21pbmF0ZUNhbGxJbmRpY2VzGmQKCUJvbmRFeHRyYR'
+    'IUCgV2YWx1ZRgBIAEoDFIFdmFsdWUSQQoMY2FsbF9pbmRpY2VzGAIgASgLMh4uVFcuUG9sa2Fk'
+    'b3QuUHJvdG8uQ2FsbEluZGljZXNSC2NhbGxJbmRpY2VzGmEKBlVuYm9uZBIUCgV2YWx1ZRgBIA'
+    'EoDFIFdmFsdWUSQQoMY2FsbF9pbmRpY2VzGAIgASgLMh4uVFcuUG9sa2Fkb3QuUHJvdG8uQ2Fs'
+    'bEluZGljZXNSC2NhbGxJbmRpY2VzGmEKBlJlYm9uZBIUCgV2YWx1ZRgBIAEoDFIFdmFsdWUSQQ'
+    'oMY2FsbF9pbmRpY2VzGAIgASgLMh4uVFcuUG9sa2Fkb3QuUHJvdG8uQ2FsbEluZGljZXNSC2Nh'
+    'bGxJbmRpY2VzGnwKEFdpdGhkcmF3VW5ib25kZWQSJQoOc2xhc2hpbmdfc3BhbnMYASABKAVSDX'
+    'NsYXNoaW5nU3BhbnMSQQoMY2FsbF9pbmRpY2VzGAIgASgLMh4uVFcuUG9sa2Fkb3QuUHJvdG8u'
+    'Q2FsbEluZGljZXNSC2NhbGxJbmRpY2VzGm0KCE5vbWluYXRlEh4KCm5vbWluYXRvcnMYASADKA'
+    'lSCm5vbWluYXRvcnMSQQoMY2FsbF9pbmRpY2VzGAIgASgLMh4uVFcuUG9sa2Fkb3QuUHJvdG8u'
+    'Q2FsbEluZGljZXNSC2NhbGxJbmRpY2VzGocCCg5DaGlsbEFuZFVuYm9uZBIUCgV2YWx1ZRgBIA'
+    'EoDFIFdmFsdWUSQQoMY2FsbF9pbmRpY2VzGAIgASgLMh4uVFcuUG9sa2Fkb3QuUHJvdG8uQ2Fs'
+    'bEluZGljZXNSC2NhbGxJbmRpY2VzEkwKEmNoaWxsX2NhbGxfaW5kaWNlcxgDIAEoCzIeLlRXLl'
+    'BvbGthZG90LlByb3RvLkNhbGxJbmRpY2VzUhBjaGlsbENhbGxJbmRpY2VzEk4KE3VuYm9uZF9j'
+    'YWxsX2luZGljZXMYBCABKAsyHi5UVy5Qb2xrYWRvdC5Qcm90by5DYWxsSW5kaWNlc1IRdW5ib2'
+    '5kQ2FsbEluZGljZXMaSgoFQ2hpbGwSQQoMY2FsbF9pbmRpY2VzGAEgASgLMh4uVFcuUG9sa2Fk'
+    'b3QuUHJvdG8uQ2FsbEluZGljZXNSC2NhbGxJbmRpY2VzQg8KDW1lc3NhZ2Vfb25lb2Y=');
 
 @$core.Deprecated('Use signingInputDescriptor instead')
 const SigningInput$json = {
@@ -394,9 +338,9 @@ const SigningInput$json = {
     {'1': 'private_key', '3': 8, '4': 1, '5': 12, '10': 'privateKey'},
     {'1': 'network', '3': 9, '4': 1, '5': 13, '10': 'network'},
     {'1': 'multi_address', '3': 10, '4': 1, '5': 8, '10': 'multiAddress'},
+    {'1': 'charge_native_as_asset_tx_payment', '3': 13, '4': 1, '5': 8, '10': 'chargeNativeAsAssetTxPayment'},
     {'1': 'balance_call', '3': 11, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Balance', '9': 0, '10': 'balanceCall'},
     {'1': 'staking_call', '3': 12, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Staking', '9': 0, '10': 'stakingCall'},
-    {'1': 'polymesh_call', '3': 13, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.PolymeshCall', '9': 0, '10': 'polymeshCall'},
   ],
   '8': [
     {'1': 'message_oneof'},
@@ -411,11 +355,11 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'ISdHJhbnNhY3Rpb25WZXJzaW9uEhAKA3RpcBgGIAEoDFIDdGlwEigKA2VyYRgHIAEoCzIWLlRX'
     'LlBvbGthZG90LlByb3RvLkVyYVIDZXJhEh8KC3ByaXZhdGVfa2V5GAggASgMUgpwcml2YXRlS2'
     'V5EhgKB25ldHdvcmsYCSABKA1SB25ldHdvcmsSIwoNbXVsdGlfYWRkcmVzcxgKIAEoCFIMbXVs'
-    'dGlBZGRyZXNzEj8KDGJhbGFuY2VfY2FsbBgLIAEoCzIaLlRXLlBvbGthZG90LlByb3RvLkJhbG'
-    'FuY2VIAFILYmFsYW5jZUNhbGwSPwoMc3Rha2luZ19jYWxsGAwgASgLMhouVFcuUG9sa2Fkb3Qu'
-    'UHJvdG8uU3Rha2luZ0gAUgtzdGFraW5nQ2FsbBJGCg1wb2x5bWVzaF9jYWxsGA0gASgLMh8uVF'
-    'cuUG9sa2Fkb3QuUHJvdG8uUG9seW1lc2hDYWxsSABSDHBvbHltZXNoQ2FsbEIPCg1tZXNzYWdl'
-    'X29uZW9m');
+    'dGlBZGRyZXNzEkcKIWNoYXJnZV9uYXRpdmVfYXNfYXNzZXRfdHhfcGF5bWVudBgNIAEoCFIcY2'
+    'hhcmdlTmF0aXZlQXNBc3NldFR4UGF5bWVudBI/CgxiYWxhbmNlX2NhbGwYCyABKAsyGi5UVy5Q'
+    'b2xrYWRvdC5Qcm90by5CYWxhbmNlSABSC2JhbGFuY2VDYWxsEj8KDHN0YWtpbmdfY2FsbBgMIA'
+    'EoCzIaLlRXLlBvbGthZG90LlByb3RvLlN0YWtpbmdIAFILc3Rha2luZ0NhbGxCDwoNbWVzc2Fn'
+    'ZV9vbmVvZg==');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {

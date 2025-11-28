@@ -22,8 +22,11 @@ message TokenAmount {
     // The name of the asset (within the policy)
     string asset_name = 2;
 
-    // The amount (uint256, serialized little endian)
+    // The amount (uint256, serialized big endian)
     bytes amount = 3;
+
+    // The name of the asset (hex encoded). Ignored if `asset_name` is set
+    string asset_name_hex = 4;
 }
 
 // One input for a transaction
@@ -101,6 +104,24 @@ message DeregisterStakingKey {
     uint64 undeposit_amount = 2;
 }
 
+// Vote delegation to a specific DRep or always abstain or no confidence
+message VoteDelegation {
+    enum DRepType {
+        DREP_ID = 0;
+        DREP_ALWAYS_ABSTAIN = 2;
+        DREP_NO_CONFIDENCE = 3;
+    }
+
+    // Staking address (as string)
+    string staking_address = 1;
+
+    // DRep type
+    DRepType drep_type = 2;
+
+    // DRep ID (only used when drep_type is DREP_ID)
+    string drep_id = 3;
+}
+
 // Delegate funds in this account to a specified staking pool.
 message Delegate {
     // Staking address (as string)
@@ -140,7 +161,7 @@ message TransactionPlan {
     uint64 deposit = 10;
 
     // coins undeposited (coming from deposit) in this TX
-    uint64 undeposit = 11;  
+    uint64 undeposit = 11;
 
     // total tokens in the utxos (optional)
     repeated TokenAmount available_tokens = 5;
@@ -156,6 +177,9 @@ message TransactionPlan {
     
     // Optional error
     Common.Proto.SigningError error = 9;
+
+    // Optional additional destination addresses, additional to first to_address output
+    repeated TxOutput extra_outputs = 12;
 }
 
 // Input data necessary to create a signed transaction.
@@ -177,16 +201,22 @@ message SigningInput {
     Delegate delegate = 7;
 
     // Optional, used in case of withdraw
-    Withdraw withdraw = 8;    
+    Withdraw withdraw = 8;
 
     // Optional
     DeregisterStakingKey deregister_staking_key = 9;
+
+    // Optional, used for vote delegation
+    VoteDelegation vote_delegation = 11;
 
     // Time-to-live time of the TX
     uint64 ttl = 4;
 
     // Optional plan, if missing it will be computed
     TransactionPlan plan = 5;
+
+    // extra output UTXOs
+    repeated TxOutput extra_outputs = 10;
 }
 
 // Result containing the signed and encoded transaction.
@@ -199,4 +229,7 @@ message SigningOutput {
 
     // Optional error
     Common.Proto.SigningError error = 3;
+
+    // error code description
+    string error_message = 4;
 }
