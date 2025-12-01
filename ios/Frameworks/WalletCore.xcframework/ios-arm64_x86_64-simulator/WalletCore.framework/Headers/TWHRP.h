@@ -28,6 +28,7 @@ enum TWHRP {
     TWHRPSyscoin     /* "sys" */,
     TWHRPVerge     /* "vg" */,
     TWHRPCosmos     /* "cosmos" */,
+    TWHRPZcash     /* "tex" */,
     TWHRPBitcoinCash     /* "bitcoincash" */,
     TWHRPBitcoinGold     /* "btg" */,
     TWHRPIoTeX     /* "io" */,
@@ -49,6 +50,7 @@ enum TWHRP {
     TWHRPHarmony     /* "one" */,
     TWHRPCardano     /* "addr" */,
     TWHRPQtum     /* "qc" */,
+    TWHRPPactus     /* "pc" */,
     TWHRPStratis     /* "strax" */,
     TWHRPNativeInjective     /* "inj" */,
     TWHRPOsmosis     /* "osmo" */,
@@ -90,6 +92,7 @@ static const char *_Nonnull HRP_MONACOIN = "mona";
 static const char *_Nonnull HRP_SYSCOIN = "sys";
 static const char *_Nonnull HRP_VERGE = "vg";
 static const char *_Nonnull HRP_COSMOS = "cosmos";
+static const char *_Nonnull HRP_ZCASH = "tex";
 static const char *_Nonnull HRP_BITCOINCASH = "bitcoincash";
 static const char *_Nonnull HRP_BITCOINGOLD = "btg";
 static const char *_Nonnull HRP_IOTEX = "io";
@@ -111,6 +114,7 @@ static const char *_Nonnull HRP_BITCOINDIAMOND = "bcd";
 static const char *_Nonnull HRP_HARMONY = "one";
 static const char *_Nonnull HRP_CARDANO = "addr";
 static const char *_Nonnull HRP_QTUM = "qc";
+static const char *_Nonnull HRP_PACTUS = "pc";
 static const char *_Nonnull HRP_STRATIS = "strax";
 static const char *_Nonnull HRP_NATIVEINJECTIVE = "inj";
 static const char *_Nonnull HRP_OSMOSIS = "osmo";

@@ -1,0 +1,2 @@
+/Users/anastasiyakirzner/pixel/flutter_trust_wallet_core/flutter_trust_wallet_core/example/android/app/.cxx/Debug/394o5i39/x86/CMakeFiles/edit_cache.dir
+/Users/anastasiyakirzner/pixel/flutter_trust_wallet_core/flutter_trust_wallet_core/example/android/app/.cxx/Debug/394o5i39/x86/CMakeFiles/rebuild_cache.dir

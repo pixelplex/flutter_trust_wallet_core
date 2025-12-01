@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/anastasiyakirzner/fvm/versions/3.29.1/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/anastasiyakirzner/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/anastasiyakirzner/pixel/flutter_trust_wallet_core/flutter_trust_wallet_core/example/android/app/.cxx/Debug/394o5i39/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/anastasiyakirzner/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/anastasiyakirzner/pixel/flutter_trust_wallet_core/flutter_trust_wallet_core/example/android/app/.cxx/Debug/394o5i39/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}

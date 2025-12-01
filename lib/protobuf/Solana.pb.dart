@@ -477,6 +477,7 @@ class CreateTokenAccount extends $pb.GeneratedMessage {
     $core.String? mainAddress,
     $core.String? tokenMintAddress,
     $core.String? tokenAddress,
+    TokenProgramId? tokenProgramId,
   }) {
     final $result = create();
     if (mainAddress != null) {
@@ -488,6 +489,9 @@ class CreateTokenAccount extends $pb.GeneratedMessage {
     if (tokenAddress != null) {
       $result.tokenAddress = tokenAddress;
     }
+    if (tokenProgramId != null) {
+      $result.tokenProgramId = tokenProgramId;
+    }
     return $result;
   }
   CreateTokenAccount._() : super();
@@ -498,6 +502,7 @@ class CreateTokenAccount extends $pb.GeneratedMessage {
     ..aOS(1, _omitFieldNames ? '' : 'mainAddress')
     ..aOS(2, _omitFieldNames ? '' : 'tokenMintAddress')
     ..aOS(3, _omitFieldNames ? '' : 'tokenAddress')
+    ..e<TokenProgramId>(4, _omitFieldNames ? '' : 'tokenProgramId', $pb.PbFieldType.OE, defaultOrMaker: TokenProgramId.TokenProgram, valueOf: TokenProgramId.valueOf, enumValues: TokenProgramId.values)
     ..hasRequiredFields = false
   ;
 
@@ -551,6 +556,16 @@ class CreateTokenAccount extends $pb.GeneratedMessage {
   $core.bool hasTokenAddress() => $_has(2);
   @$pb.TagNumber(3)
   void clearTokenAddress() => clearField(3);
+
+  /// optional token program id
+  @$pb.TagNumber(4)
+  TokenProgramId get tokenProgramId => $_getN(3);
+  @$pb.TagNumber(4)
+  set tokenProgramId(TokenProgramId v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasTokenProgramId() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearTokenProgramId() => clearField(4);
 }
 
 /// Transfer tokens
@@ -563,6 +578,7 @@ class TokenTransfer extends $pb.GeneratedMessage {
     $core.int? decimals,
     $core.String? memo,
     $core.Iterable<$core.String>? references,
+    TokenProgramId? tokenProgramId,
   }) {
     final $result = create();
     if (tokenMintAddress != null) {
@@ -586,6 +602,9 @@ class TokenTransfer extends $pb.GeneratedMessage {
     if (references != null) {
       $result.references.addAll(references);
     }
+    if (tokenProgramId != null) {
+      $result.tokenProgramId = tokenProgramId;
+    }
     return $result;
   }
   TokenTransfer._() : super();
@@ -600,6 +619,7 @@ class TokenTransfer extends $pb.GeneratedMessage {
     ..a<$core.int>(5, _omitFieldNames ? '' : 'decimals', $pb.PbFieldType.OU3)
     ..aOS(6, _omitFieldNames ? '' : 'memo')
     ..pPS(7, _omitFieldNames ? '' : 'references')
+    ..e<TokenProgramId>(8, _omitFieldNames ? '' : 'tokenProgramId', $pb.PbFieldType.OE, defaultOrMaker: TokenProgramId.TokenProgram, valueOf: TokenProgramId.valueOf, enumValues: TokenProgramId.values)
     ..hasRequiredFields = false
   ;
 
@@ -687,6 +707,16 @@ class TokenTransfer extends $pb.GeneratedMessage {
   /// optional referenced public keys
   @$pb.TagNumber(7)
   $core.List<$core.String> get references => $_getList(6);
+
+  /// optional token program id
+  @$pb.TagNumber(8)
+  TokenProgramId get tokenProgramId => $_getN(7);
+  @$pb.TagNumber(8)
+  set tokenProgramId(TokenProgramId v) { setField(8, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasTokenProgramId() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearTokenProgramId() => clearField(8);
 }
 
 /// CreateTokenAccount and TokenTransfer combined
@@ -700,6 +730,7 @@ class CreateAndTransferToken extends $pb.GeneratedMessage {
     $core.int? decimals,
     $core.String? memo,
     $core.Iterable<$core.String>? references,
+    TokenProgramId? tokenProgramId,
   }) {
     final $result = create();
     if (recipientMainAddress != null) {
@@ -726,6 +757,9 @@ class CreateAndTransferToken extends $pb.GeneratedMessage {
     if (references != null) {
       $result.references.addAll(references);
     }
+    if (tokenProgramId != null) {
+      $result.tokenProgramId = tokenProgramId;
+    }
     return $result;
   }
   CreateAndTransferToken._() : super();
@@ -741,6 +775,7 @@ class CreateAndTransferToken extends $pb.GeneratedMessage {
     ..a<$core.int>(6, _omitFieldNames ? '' : 'decimals', $pb.PbFieldType.OU3)
     ..aOS(7, _omitFieldNames ? '' : 'memo')
     ..pPS(8, _omitFieldNames ? '' : 'references')
+    ..e<TokenProgramId>(9, _omitFieldNames ? '' : 'tokenProgramId', $pb.PbFieldType.OE, defaultOrMaker: TokenProgramId.TokenProgram, valueOf: TokenProgramId.valueOf, enumValues: TokenProgramId.values)
     ..hasRequiredFields = false
   ;
 
@@ -838,6 +873,144 @@ class CreateAndTransferToken extends $pb.GeneratedMessage {
   /// optional referenced public keys
   @$pb.TagNumber(8)
   $core.List<$core.String> get references => $_getList(7);
+
+  /// optional token program id
+  @$pb.TagNumber(9)
+  TokenProgramId get tokenProgramId => $_getN(8);
+  @$pb.TagNumber(9)
+  set tokenProgramId(TokenProgramId v) { setField(9, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasTokenProgramId() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearTokenProgramId() => clearField(9);
+}
+
+/// Transfer tokens to the feepayer
+class TokenTransferToFeePayer extends $pb.GeneratedMessage {
+  factory TokenTransferToFeePayer({
+    $core.String? feeTokenMintAddress,
+    $core.String? feeRecipientTokenAddress,
+    $fixnum.Int64? feeAmount,
+    $core.String? feeSenderTokenAddress,
+    $core.int? feeDecimals,
+    TokenProgramId? feeTokenProgramId,
+  }) {
+    final $result = create();
+    if (feeTokenMintAddress != null) {
+      $result.feeTokenMintAddress = feeTokenMintAddress;
+    }
+    if (feeRecipientTokenAddress != null) {
+      $result.feeRecipientTokenAddress = feeRecipientTokenAddress;
+    }
+    if (feeAmount != null) {
+      $result.feeAmount = feeAmount;
+    }
+    if (feeSenderTokenAddress != null) {
+      $result.feeSenderTokenAddress = feeSenderTokenAddress;
+    }
+    if (feeDecimals != null) {
+      $result.feeDecimals = feeDecimals;
+    }
+    if (feeTokenProgramId != null) {
+      $result.feeTokenProgramId = feeTokenProgramId;
+    }
+    return $result;
+  }
+  TokenTransferToFeePayer._() : super();
+  factory TokenTransferToFeePayer.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory TokenTransferToFeePayer.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TokenTransferToFeePayer', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'feeTokenMintAddress')
+    ..aOS(2, _omitFieldNames ? '' : 'feeRecipientTokenAddress')
+    ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'feeAmount', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aOS(4, _omitFieldNames ? '' : 'feeSenderTokenAddress')
+    ..a<$core.int>(5, _omitFieldNames ? '' : 'feeDecimals', $pb.PbFieldType.OU3)
+    ..e<TokenProgramId>(6, _omitFieldNames ? '' : 'feeTokenProgramId', $pb.PbFieldType.OE, defaultOrMaker: TokenProgramId.TokenProgram, valueOf: TokenProgramId.valueOf, enumValues: TokenProgramId.values)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  TokenTransferToFeePayer clone() => TokenTransferToFeePayer()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  TokenTransferToFeePayer copyWith(void Function(TokenTransferToFeePayer) updates) => super.copyWith((message) => updates(message as TokenTransferToFeePayer)) as TokenTransferToFeePayer;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static TokenTransferToFeePayer create() => TokenTransferToFeePayer._();
+  TokenTransferToFeePayer createEmptyInstance() => create();
+  static $pb.PbList<TokenTransferToFeePayer> createRepeated() => $pb.PbList<TokenTransferToFeePayer>();
+  @$core.pragma('dart2js:noInline')
+  static TokenTransferToFeePayer getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TokenTransferToFeePayer>(create);
+  static TokenTransferToFeePayer? _defaultInstance;
+
+  /// Mint address of the fee token
+  @$pb.TagNumber(1)
+  $core.String get feeTokenMintAddress => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set feeTokenMintAddress($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasFeeTokenMintAddress() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearFeeTokenMintAddress() => clearField(1);
+
+  /// Token account address of the fee recipient.
+  /// Note that it could be different from the token account of the feepayer.
+  @$pb.TagNumber(2)
+  $core.String get feeRecipientTokenAddress => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set feeRecipientTokenAddress($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasFeeRecipientTokenAddress() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearFeeRecipientTokenAddress() => clearField(2);
+
+  /// Fee amount
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get feeAmount => $_getI64(2);
+  @$pb.TagNumber(3)
+  set feeAmount($fixnum.Int64 v) { $_setInt64(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasFeeAmount() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearFeeAmount() => clearField(3);
+
+  /// Sender's fee token address
+  @$pb.TagNumber(4)
+  $core.String get feeSenderTokenAddress => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set feeSenderTokenAddress($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasFeeSenderTokenAddress() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearFeeSenderTokenAddress() => clearField(4);
+
+  /// Note: 8-bit value
+  @$pb.TagNumber(5)
+  $core.int get feeDecimals => $_getIZ(4);
+  @$pb.TagNumber(5)
+  set feeDecimals($core.int v) { $_setUnsignedInt32(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasFeeDecimals() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearFeeDecimals() => clearField(5);
+
+  /// optional token program id
+  @$pb.TagNumber(6)
+  TokenProgramId get feeTokenProgramId => $_getN(5);
+  @$pb.TagNumber(6)
+  set feeTokenProgramId(TokenProgramId v) { setField(6, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasFeeTokenProgramId() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearFeeTokenProgramId() => clearField(6);
 }
 
 class CreateNonceAccount extends $pb.GeneratedMessage {
@@ -1824,6 +1997,8 @@ class SigningInput extends $pb.GeneratedMessage {
     Encoding? txEncoding,
     PriorityFeePrice? priorityFeePrice,
     PriorityFeeLimit? priorityFeeLimit,
+    TokenTransferToFeePayer? tokenTransferToFeePayer,
+    Transfer? transferToFeePayer,
   }) {
     final $result = create();
     if (privateKey != null) {
@@ -1895,6 +2070,12 @@ class SigningInput extends $pb.GeneratedMessage {
     if (priorityFeeLimit != null) {
       $result.priorityFeeLimit = priorityFeeLimit;
     }
+    if (tokenTransferToFeePayer != null) {
+      $result.tokenTransferToFeePayer = tokenTransferToFeePayer;
+    }
+    if (transferToFeePayer != null) {
+      $result.transferToFeePayer = transferToFeePayer;
+    }
     return $result;
   }
   SigningInput._() : super();
@@ -1941,6 +2122,8 @@ class SigningInput extends $pb.GeneratedMessage {
     ..e<Encoding>(21, _omitFieldNames ? '' : 'txEncoding', $pb.PbFieldType.OE, defaultOrMaker: Encoding.Base58, valueOf: Encoding.valueOf, enumValues: Encoding.values)
     ..aOM<PriorityFeePrice>(22, _omitFieldNames ? '' : 'priorityFeePrice', subBuilder: PriorityFeePrice.create)
     ..aOM<PriorityFeeLimit>(23, _omitFieldNames ? '' : 'priorityFeeLimit', subBuilder: PriorityFeeLimit.create)
+    ..aOM<TokenTransferToFeePayer>(24, _omitFieldNames ? '' : 'tokenTransferToFeePayer', subBuilder: TokenTransferToFeePayer.create)
+    ..aOM<Transfer>(25, _omitFieldNames ? '' : 'transferToFeePayer', subBuilder: Transfer.create)
     ..hasRequiredFields = false
   ;
 
@@ -2217,6 +2400,31 @@ class SigningInput extends $pb.GeneratedMessage {
   void clearPriorityFeeLimit() => clearField(23);
   @$pb.TagNumber(23)
   PriorityFeeLimit ensurePriorityFeeLimit() => $_ensure(22);
+
+  /// Optional token transfer to fee payer.
+  @$pb.TagNumber(24)
+  TokenTransferToFeePayer get tokenTransferToFeePayer => $_getN(23);
+  @$pb.TagNumber(24)
+  set tokenTransferToFeePayer(TokenTransferToFeePayer v) { setField(24, v); }
+  @$pb.TagNumber(24)
+  $core.bool hasTokenTransferToFeePayer() => $_has(23);
+  @$pb.TagNumber(24)
+  void clearTokenTransferToFeePayer() => clearField(24);
+  @$pb.TagNumber(24)
+  TokenTransferToFeePayer ensureTokenTransferToFeePayer() => $_ensure(23);
+
+  /// Optional SOL transfer to fee payer. This will be the last instruction in the transaction.
+  /// https://docs.blinklabs.xyz/blink/solana/gas-sponsorship/api-reference#active-sponsorship
+  @$pb.TagNumber(25)
+  Transfer get transferToFeePayer => $_getN(24);
+  @$pb.TagNumber(25)
+  set transferToFeePayer(Transfer v) { setField(25, v); }
+  @$pb.TagNumber(25)
+  $core.bool hasTransferToFeePayer() => $_has(24);
+  @$pb.TagNumber(25)
+  void clearTransferToFeePayer() => clearField(25);
+  @$pb.TagNumber(25)
+  Transfer ensureTransferToFeePayer() => $_ensure(24);
 }
 
 /// Result containing the signed and encoded transaction.
@@ -2414,6 +2622,234 @@ class PreSigningOutput extends $pb.GeneratedMessage {
   $core.bool hasErrorMessage() => $_has(3);
   @$pb.TagNumber(4)
   void clearErrorMessage() => clearField(4);
+}
+
+class MessageSigningInput extends $pb.GeneratedMessage {
+  factory MessageSigningInput({
+    $core.List<$core.int>? privateKey,
+    $core.String? message,
+  }) {
+    final $result = create();
+    if (privateKey != null) {
+      $result.privateKey = privateKey;
+    }
+    if (message != null) {
+      $result.message = message;
+    }
+    return $result;
+  }
+  MessageSigningInput._() : super();
+  factory MessageSigningInput.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MessageSigningInput.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MessageSigningInput', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'), createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(1, _omitFieldNames ? '' : 'privateKey', $pb.PbFieldType.OY)
+    ..aOS(2, _omitFieldNames ? '' : 'message')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MessageSigningInput clone() => MessageSigningInput()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MessageSigningInput copyWith(void Function(MessageSigningInput) updates) => super.copyWith((message) => updates(message as MessageSigningInput)) as MessageSigningInput;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static MessageSigningInput create() => MessageSigningInput._();
+  MessageSigningInput createEmptyInstance() => create();
+  static $pb.PbList<MessageSigningInput> createRepeated() => $pb.PbList<MessageSigningInput>();
+  @$core.pragma('dart2js:noInline')
+  static MessageSigningInput getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MessageSigningInput>(create);
+  static MessageSigningInput? _defaultInstance;
+
+  /// The secret private key used for signing (32 bytes).
+  @$pb.TagNumber(1)
+  $core.List<$core.int> get privateKey => $_getN(0);
+  @$pb.TagNumber(1)
+  set privateKey($core.List<$core.int> v) { $_setBytes(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasPrivateKey() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPrivateKey() => clearField(1);
+
+  /// A UTF-8 regular message to sign.
+  @$pb.TagNumber(2)
+  $core.String get message => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set message($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasMessage() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearMessage() => clearField(2);
+}
+
+class MessageSigningOutput extends $pb.GeneratedMessage {
+  factory MessageSigningOutput({
+    $core.String? signature,
+    $0.SigningError? error,
+    $core.String? errorMessage,
+  }) {
+    final $result = create();
+    if (signature != null) {
+      $result.signature = signature;
+    }
+    if (error != null) {
+      $result.error = error;
+    }
+    if (errorMessage != null) {
+      $result.errorMessage = errorMessage;
+    }
+    return $result;
+  }
+  MessageSigningOutput._() : super();
+  factory MessageSigningOutput.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MessageSigningOutput.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MessageSigningOutput', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'signature')
+    ..e<$0.SigningError>(2, _omitFieldNames ? '' : 'error', $pb.PbFieldType.OE, defaultOrMaker: $0.SigningError.OK, valueOf: $0.SigningError.valueOf, enumValues: $0.SigningError.values)
+    ..aOS(3, _omitFieldNames ? '' : 'errorMessage')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MessageSigningOutput clone() => MessageSigningOutput()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MessageSigningOutput copyWith(void Function(MessageSigningOutput) updates) => super.copyWith((message) => updates(message as MessageSigningOutput)) as MessageSigningOutput;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static MessageSigningOutput create() => MessageSigningOutput._();
+  MessageSigningOutput createEmptyInstance() => create();
+  static $pb.PbList<MessageSigningOutput> createRepeated() => $pb.PbList<MessageSigningOutput>();
+  @$core.pragma('dart2js:noInline')
+  static MessageSigningOutput getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MessageSigningOutput>(create);
+  static MessageSigningOutput? _defaultInstance;
+
+  /// The signature, Base58-encoded.
+  @$pb.TagNumber(1)
+  $core.String get signature => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set signature($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasSignature() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearSignature() => clearField(1);
+
+  /// error code, 0 is ok, other codes will be treated as errors
+  @$pb.TagNumber(2)
+  $0.SigningError get error => $_getN(1);
+  @$pb.TagNumber(2)
+  set error($0.SigningError v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasError() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearError() => clearField(2);
+
+  /// error code description
+  @$pb.TagNumber(3)
+  $core.String get errorMessage => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set errorMessage($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasErrorMessage() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearErrorMessage() => clearField(3);
+}
+
+class MessageVerifyingInput extends $pb.GeneratedMessage {
+  factory MessageVerifyingInput({
+    $core.String? message,
+    $core.List<$core.int>? publicKey,
+    $core.String? signature,
+  }) {
+    final $result = create();
+    if (message != null) {
+      $result.message = message;
+    }
+    if (publicKey != null) {
+      $result.publicKey = publicKey;
+    }
+    if (signature != null) {
+      $result.signature = signature;
+    }
+    return $result;
+  }
+  MessageVerifyingInput._() : super();
+  factory MessageVerifyingInput.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MessageVerifyingInput.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MessageVerifyingInput', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'message')
+    ..a<$core.List<$core.int>>(2, _omitFieldNames ? '' : 'publicKey', $pb.PbFieldType.OY)
+    ..aOS(3, _omitFieldNames ? '' : 'signature')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MessageVerifyingInput clone() => MessageVerifyingInput()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MessageVerifyingInput copyWith(void Function(MessageVerifyingInput) updates) => super.copyWith((message) => updates(message as MessageVerifyingInput)) as MessageVerifyingInput;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static MessageVerifyingInput create() => MessageVerifyingInput._();
+  MessageVerifyingInput createEmptyInstance() => create();
+  static $pb.PbList<MessageVerifyingInput> createRepeated() => $pb.PbList<MessageVerifyingInput>();
+  @$core.pragma('dart2js:noInline')
+  static MessageVerifyingInput getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MessageVerifyingInput>(create);
+  static MessageVerifyingInput? _defaultInstance;
+
+  /// The message signed.
+  @$pb.TagNumber(1)
+  $core.String get message => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set message($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasMessage() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMessage() => clearField(1);
+
+  /// Public key that will verify and recover the message from the signature.
+  @$pb.TagNumber(2)
+  $core.List<$core.int> get publicKey => $_getN(1);
+  @$pb.TagNumber(2)
+  set publicKey($core.List<$core.int> v) { $_setBytes(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPublicKey() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPublicKey() => clearField(2);
+
+  /// The signature, Base58-encoded.
+  @$pb.TagNumber(3)
+  $core.String get signature => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set signature($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasSignature() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearSignature() => clearField(3);
 }
 
 

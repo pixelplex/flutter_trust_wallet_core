@@ -1,31 +1,33 @@
-group 'com.memtopia.flutter_trust_wallet_core'
-version '1.0-SNAPSHOT'
-
 buildscript {
-    ext.kotlin_version = '1.9.20'
+    ext.kotlin_version = '2.1.0'
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath 'com.android.tools.build:gradle:8.6.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+group 'com.memtopia.flutter_trust_wallet_core'
+version '1.0-SNAPSHOT'
+
 rootProject.allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         flatDir {
             dirs project(':flutter_trust_wallet_core').file('libs')
         }
     }
 }
-
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 35

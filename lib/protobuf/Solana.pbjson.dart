@@ -13,6 +13,20 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use tokenProgramIdDescriptor instead')
+const TokenProgramId$json = {
+  '1': 'TokenProgramId',
+  '2': [
+    {'1': 'TokenProgram', '2': 0},
+    {'1': 'Token2022Program', '2': 1},
+  ],
+};
+
+/// Descriptor for `TokenProgramId`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List tokenProgramIdDescriptor = $convert.base64Decode(
+    'Cg5Ub2tlblByb2dyYW1JZBIQCgxUb2tlblByb2dyYW0QABIUChBUb2tlbjIwMjJQcm9ncmFtEA'
+    'E=');
+
 @$core.Deprecated('Use encodingDescriptor instead')
 const Encoding$json = {
   '1': 'Encoding',
@@ -132,6 +146,7 @@ const CreateTokenAccount$json = {
     {'1': 'main_address', '3': 1, '4': 1, '5': 9, '10': 'mainAddress'},
     {'1': 'token_mint_address', '3': 2, '4': 1, '5': 9, '10': 'tokenMintAddress'},
     {'1': 'token_address', '3': 3, '4': 1, '5': 9, '10': 'tokenAddress'},
+    {'1': 'token_program_id', '3': 4, '4': 1, '5': 14, '6': '.TW.Solana.Proto.TokenProgramId', '10': 'tokenProgramId'},
   ],
 };
 
@@ -139,7 +154,8 @@ const CreateTokenAccount$json = {
 final $typed_data.Uint8List createTokenAccountDescriptor = $convert.base64Decode(
     'ChJDcmVhdGVUb2tlbkFjY291bnQSIQoMbWFpbl9hZGRyZXNzGAEgASgJUgttYWluQWRkcmVzcx'
     'IsChJ0b2tlbl9taW50X2FkZHJlc3MYAiABKAlSEHRva2VuTWludEFkZHJlc3MSIwoNdG9rZW5f'
-    'YWRkcmVzcxgDIAEoCVIMdG9rZW5BZGRyZXNz');
+    'YWRkcmVzcxgDIAEoCVIMdG9rZW5BZGRyZXNzEkkKEHRva2VuX3Byb2dyYW1faWQYBCABKA4yHy'
+    '5UVy5Tb2xhbmEuUHJvdG8uVG9rZW5Qcm9ncmFtSWRSDnRva2VuUHJvZ3JhbUlk');
 
 @$core.Deprecated('Use tokenTransferDescriptor instead')
 const TokenTransfer$json = {
@@ -152,6 +168,7 @@ const TokenTransfer$json = {
     {'1': 'decimals', '3': 5, '4': 1, '5': 13, '10': 'decimals'},
     {'1': 'memo', '3': 6, '4': 1, '5': 9, '10': 'memo'},
     {'1': 'references', '3': 7, '4': 3, '5': 9, '10': 'references'},
+    {'1': 'token_program_id', '3': 8, '4': 1, '5': 14, '6': '.TW.Solana.Proto.TokenProgramId', '10': 'tokenProgramId'},
   ],
 };
 
@@ -161,7 +178,9 @@ final $typed_data.Uint8List tokenTransferDescriptor = $convert.base64Decode(
     'RkcmVzcxIwChRzZW5kZXJfdG9rZW5fYWRkcmVzcxgCIAEoCVISc2VuZGVyVG9rZW5BZGRyZXNz'
     'EjYKF3JlY2lwaWVudF90b2tlbl9hZGRyZXNzGAMgASgJUhVyZWNpcGllbnRUb2tlbkFkZHJlc3'
     'MSFgoGYW1vdW50GAQgASgEUgZhbW91bnQSGgoIZGVjaW1hbHMYBSABKA1SCGRlY2ltYWxzEhIK'
-    'BG1lbW8YBiABKAlSBG1lbW8SHgoKcmVmZXJlbmNlcxgHIAMoCVIKcmVmZXJlbmNlcw==');
+    'BG1lbW8YBiABKAlSBG1lbW8SHgoKcmVmZXJlbmNlcxgHIAMoCVIKcmVmZXJlbmNlcxJJChB0b2'
+    'tlbl9wcm9ncmFtX2lkGAggASgOMh8uVFcuU29sYW5hLlByb3RvLlRva2VuUHJvZ3JhbUlkUg50'
+    'b2tlblByb2dyYW1JZA==');
 
 @$core.Deprecated('Use createAndTransferTokenDescriptor instead')
 const CreateAndTransferToken$json = {
@@ -175,6 +194,7 @@ const CreateAndTransferToken$json = {
     {'1': 'decimals', '3': 6, '4': 1, '5': 13, '10': 'decimals'},
     {'1': 'memo', '3': 7, '4': 1, '5': 9, '10': 'memo'},
     {'1': 'references', '3': 8, '4': 3, '5': 9, '10': 'references'},
+    {'1': 'token_program_id', '3': 9, '4': 1, '5': 14, '6': '.TW.Solana.Proto.TokenProgramId', '10': 'tokenProgramId'},
   ],
 };
 
@@ -186,7 +206,31 @@ final $typed_data.Uint8List createAndTransferTokenDescriptor = $convert.base64De
     '50VG9rZW5BZGRyZXNzEjAKFHNlbmRlcl90b2tlbl9hZGRyZXNzGAQgASgJUhJzZW5kZXJUb2tl'
     'bkFkZHJlc3MSFgoGYW1vdW50GAUgASgEUgZhbW91bnQSGgoIZGVjaW1hbHMYBiABKA1SCGRlY2'
     'ltYWxzEhIKBG1lbW8YByABKAlSBG1lbW8SHgoKcmVmZXJlbmNlcxgIIAMoCVIKcmVmZXJlbmNl'
-    'cw==');
+    'cxJJChB0b2tlbl9wcm9ncmFtX2lkGAkgASgOMh8uVFcuU29sYW5hLlByb3RvLlRva2VuUHJvZ3'
+    'JhbUlkUg50b2tlblByb2dyYW1JZA==');
+
+@$core.Deprecated('Use tokenTransferToFeePayerDescriptor instead')
+const TokenTransferToFeePayer$json = {
+  '1': 'TokenTransferToFeePayer',
+  '2': [
+    {'1': 'fee_token_mint_address', '3': 1, '4': 1, '5': 9, '10': 'feeTokenMintAddress'},
+    {'1': 'fee_recipient_token_address', '3': 2, '4': 1, '5': 9, '10': 'feeRecipientTokenAddress'},
+    {'1': 'fee_amount', '3': 3, '4': 1, '5': 4, '10': 'feeAmount'},
+    {'1': 'fee_sender_token_address', '3': 4, '4': 1, '5': 9, '10': 'feeSenderTokenAddress'},
+    {'1': 'fee_decimals', '3': 5, '4': 1, '5': 13, '10': 'feeDecimals'},
+    {'1': 'fee_token_program_id', '3': 6, '4': 1, '5': 14, '6': '.TW.Solana.Proto.TokenProgramId', '10': 'feeTokenProgramId'},
+  ],
+};
+
+/// Descriptor for `TokenTransferToFeePayer`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List tokenTransferToFeePayerDescriptor = $convert.base64Decode(
+    'ChdUb2tlblRyYW5zZmVyVG9GZWVQYXllchIzChZmZWVfdG9rZW5fbWludF9hZGRyZXNzGAEgAS'
+    'gJUhNmZWVUb2tlbk1pbnRBZGRyZXNzEj0KG2ZlZV9yZWNpcGllbnRfdG9rZW5fYWRkcmVzcxgC'
+    'IAEoCVIYZmVlUmVjaXBpZW50VG9rZW5BZGRyZXNzEh0KCmZlZV9hbW91bnQYAyABKARSCWZlZU'
+    'Ftb3VudBI3ChhmZWVfc2VuZGVyX3Rva2VuX2FkZHJlc3MYBCABKAlSFWZlZVNlbmRlclRva2Vu'
+    'QWRkcmVzcxIhCgxmZWVfZGVjaW1hbHMYBSABKA1SC2ZlZURlY2ltYWxzElAKFGZlZV90b2tlbl'
+    '9wcm9ncmFtX2lkGAYgASgOMh8uVFcuU29sYW5hLlByb3RvLlRva2VuUHJvZ3JhbUlkUhFmZWVU'
+    'b2tlblByb2dyYW1JZA==');
 
 @$core.Deprecated('Use createNonceAccountDescriptor instead')
 const CreateNonceAccount$json = {
@@ -429,6 +473,8 @@ const SigningInput$json = {
     {'1': 'tx_encoding', '3': 21, '4': 1, '5': 14, '6': '.TW.Solana.Proto.Encoding', '10': 'txEncoding'},
     {'1': 'priority_fee_price', '3': 22, '4': 1, '5': 11, '6': '.TW.Solana.Proto.PriorityFeePrice', '10': 'priorityFeePrice'},
     {'1': 'priority_fee_limit', '3': 23, '4': 1, '5': 11, '6': '.TW.Solana.Proto.PriorityFeeLimit', '10': 'priorityFeeLimit'},
+    {'1': 'token_transfer_to_fee_payer', '3': 24, '4': 1, '5': 11, '6': '.TW.Solana.Proto.TokenTransferToFeePayer', '10': 'tokenTransferToFeePayer'},
+    {'1': 'transfer_to_fee_payer', '3': 25, '4': 1, '5': 11, '6': '.TW.Solana.Proto.Transfer', '10': 'transferToFeePayer'},
   ],
   '8': [
     {'1': 'transaction_type'},
@@ -467,8 +513,11 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     't0eF9lbmNvZGluZxgVIAEoDjIZLlRXLlNvbGFuYS5Qcm90by5FbmNvZGluZ1IKdHhFbmNvZGlu'
     'ZxJPChJwcmlvcml0eV9mZWVfcHJpY2UYFiABKAsyIS5UVy5Tb2xhbmEuUHJvdG8uUHJpb3JpdH'
     'lGZWVQcmljZVIQcHJpb3JpdHlGZWVQcmljZRJPChJwcmlvcml0eV9mZWVfbGltaXQYFyABKAsy'
-    'IS5UVy5Tb2xhbmEuUHJvdG8uUHJpb3JpdHlGZWVMaW1pdFIQcHJpb3JpdHlGZWVMaW1pdEISCh'
-    'B0cmFuc2FjdGlvbl90eXBl');
+    'IS5UVy5Tb2xhbmEuUHJvdG8uUHJpb3JpdHlGZWVMaW1pdFIQcHJpb3JpdHlGZWVMaW1pdBJmCh'
+    't0b2tlbl90cmFuc2Zlcl90b19mZWVfcGF5ZXIYGCABKAsyKC5UVy5Tb2xhbmEuUHJvdG8uVG9r'
+    'ZW5UcmFuc2ZlclRvRmVlUGF5ZXJSF3Rva2VuVHJhbnNmZXJUb0ZlZVBheWVyEkwKFXRyYW5zZm'
+    'VyX3RvX2ZlZV9wYXllchgZIAEoCzIZLlRXLlNvbGFuYS5Qcm90by5UcmFuc2ZlclISdHJhbnNm'
+    'ZXJUb0ZlZVBheWVyQhIKEHRyYW5zYWN0aW9uX3R5cGU=');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {
@@ -506,4 +555,49 @@ final $typed_data.Uint8List preSigningOutputDescriptor = $convert.base64Decode(
     'ChBQcmVTaWduaW5nT3V0cHV0EhgKB3NpZ25lcnMYASADKAxSB3NpZ25lcnMSEgoEZGF0YRgCIA'
     'EoDFIEZGF0YRIzCgVlcnJvchgDIAEoDjIdLlRXLkNvbW1vbi5Qcm90by5TaWduaW5nRXJyb3JS'
     'BWVycm9yEiMKDWVycm9yX21lc3NhZ2UYBCABKAlSDGVycm9yTWVzc2FnZQ==');
+
+@$core.Deprecated('Use messageSigningInputDescriptor instead')
+const MessageSigningInput$json = {
+  '1': 'MessageSigningInput',
+  '2': [
+    {'1': 'private_key', '3': 1, '4': 1, '5': 12, '10': 'privateKey'},
+    {'1': 'message', '3': 2, '4': 1, '5': 9, '10': 'message'},
+  ],
+};
+
+/// Descriptor for `MessageSigningInput`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List messageSigningInputDescriptor = $convert.base64Decode(
+    'ChNNZXNzYWdlU2lnbmluZ0lucHV0Eh8KC3ByaXZhdGVfa2V5GAEgASgMUgpwcml2YXRlS2V5Eh'
+    'gKB21lc3NhZ2UYAiABKAlSB21lc3NhZ2U=');
+
+@$core.Deprecated('Use messageSigningOutputDescriptor instead')
+const MessageSigningOutput$json = {
+  '1': 'MessageSigningOutput',
+  '2': [
+    {'1': 'signature', '3': 1, '4': 1, '5': 9, '10': 'signature'},
+    {'1': 'error', '3': 2, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
+  ],
+};
+
+/// Descriptor for `MessageSigningOutput`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List messageSigningOutputDescriptor = $convert.base64Decode(
+    'ChRNZXNzYWdlU2lnbmluZ091dHB1dBIcCglzaWduYXR1cmUYASABKAlSCXNpZ25hdHVyZRIzCg'
+    'VlcnJvchgCIAEoDjIdLlRXLkNvbW1vbi5Qcm90by5TaWduaW5nRXJyb3JSBWVycm9yEiMKDWVy'
+    'cm9yX21lc3NhZ2UYAyABKAlSDGVycm9yTWVzc2FnZQ==');
+
+@$core.Deprecated('Use messageVerifyingInputDescriptor instead')
+const MessageVerifyingInput$json = {
+  '1': 'MessageVerifyingInput',
+  '2': [
+    {'1': 'message', '3': 1, '4': 1, '5': 9, '10': 'message'},
+    {'1': 'public_key', '3': 2, '4': 1, '5': 12, '10': 'publicKey'},
+    {'1': 'signature', '3': 3, '4': 1, '5': 9, '10': 'signature'},
+  ],
+};
+
+/// Descriptor for `MessageVerifyingInput`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List messageVerifyingInputDescriptor = $convert.base64Decode(
+    'ChVNZXNzYWdlVmVyaWZ5aW5nSW5wdXQSGAoHbWVzc2FnZRgBIAEoCVIHbWVzc2FnZRIdCgpwdW'
+    'JsaWNfa2V5GAIgASgMUglwdWJsaWNLZXkSHAoJc2lnbmF0dXJlGAMgASgJUglzaWduYXR1cmU=');
 

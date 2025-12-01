@@ -12,6 +12,8 @@
 TW_EXTERN_C_BEGIN
 
 /// Non-default coin address derivation names (default, unnamed derivations are not included).
+/// Note the enum variant must be sync with `TWDerivation` enum in Rust:
+/// https://github.com/trustwallet/wallet-core/blob/master/rust/tw_coin_registry/src/tw_derivation.rs
 TW_EXPORT_ENUM()
 enum TWDerivation {
     TWDerivationDefault = 0, // default, for any coin
@@ -19,11 +21,16 @@ enum TWDerivation {
     TWDerivationBitcoinSegwit = 2,
     TWDerivationBitcoinLegacy = 3,
     TWDerivationBitcoinTestnet = 4,
-    TWDerivationBitcoinTestnetSegwit = 5,
-    TWDerivationBitcoinTestnetLegacy = 6,
-    TWDerivationLitecoinLegacy = 7,
-    TWDerivationLitecoinTestnetLegacy = 8,
-    TWDerivationSolanaSolana = 9,
+    TWDerivationLitecoinLegacy = 5,
+    TWDerivationSolanaSolana = 6,
+    TWDerivationStratisSegwit = 7,
+    TWDerivationBitcoinTaproot = 8,
+    TWDerivationPactusMainnet = 9,
+    TWDerivationPactusTestnet = 10,
+    TWDerivationBitcoinTestnetSegwit = 11,
+    TWDerivationBitcoinTestnetLegacy = 12,
+    TWDerivationLitecoinTestnetLegacy = 13,
+    // end_of_derivation_enum - USED TO GENERATE CODE
 };
 
 TW_EXTERN_C_END
