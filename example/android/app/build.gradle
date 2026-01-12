@@ -29,6 +29,7 @@ if (flutterVersionName == null) {
 
 android {
     compileSdkVersion 35
+    ndkVersion "28.0.13004108"
     namespace "com.memtopia.flutter_trust_wallet_core_example"
 
     sourceSets {
